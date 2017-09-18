@@ -10,7 +10,7 @@ const WrapPre = styled.pre`
 `;
 
 const HeaderFooter = () => (
-  <Box tag='footer' align='center' pad='large'>
+  <Box tag='footer' align='center' pad={{ horizontal: 'small' }}>
     <Box pad={{ vertical: 'large' }}>
       <Box
         border={{ radius: 'xlarge' }}

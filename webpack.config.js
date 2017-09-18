@@ -1,11 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const env = process.env.NODE_ENV || 'production';
 const useAlias = process.env.USE_ALIAS;
 
 let plugins = [
+  new WriteFilePlugin(),
   new CopyWebpackPlugin([{ from: './public' }]),
   new webpack.DefinePlugin({
     'process.env': {

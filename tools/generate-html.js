@@ -39,10 +39,15 @@ const ssrHTML = `<!DOCTYPE html>
       animation-delay: 0s, 4.7s;
     }
 
-    .fade {
+    .fade-text {
       opacity: 0;
       animation: fade-in 0.5s 1 forwards, fade-out 0.3s 1 forwards;
       animation-delay: 0.3s, 4.7s;
+    }
+
+    .fade-icon {
+      opacity: 0;
+      animation: fade-in 1s 1 forwards;
     }
 
     #chomp-mouth {

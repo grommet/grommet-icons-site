@@ -12,7 +12,7 @@ const IconExample = ({ name, icon }) => {
         basis='xlarge'
         direction='row'
         responsive={true}
-        pad={{ top: 'medium' }}
+        pad={{ top: 'small' }}
       >
         <Box responsive={true} basis='1/2'>
           <Heading margin='none' level={2}>How do I use them?</Heading>
@@ -67,20 +67,20 @@ const IconExample = ({ name, icon }) => {
             background='light-1'
             border={{ radius: 'large' }}
           >
-            <Component color='plain' size='xlarge' />
+            <Component color='plain' size='xlarge' className='fade-icon' />
           </Box>
           <Box align='start' direction='row'>
             <Box align='start'>
               <Box margin='small' pad='medium' background='light-1' border={{ radius: 'large' }}>
-                <Component size='large' />
+                <Component size='large' className='fade-icon' />
               </Box>
               <Box margin='small' pad='small' background='light-1' border={{ radius: 'large' }}>
-                <Component color='brand' />
+                <Component color='brand' className='fade-icon' />
               </Box>
             </Box>
             <Box align='start'>
               <Box margin='small' pad='small' background='light-1' border={{ radius: 'large' }}>
-                <Component />
+                <Component className='fade-icon' />
               </Box>
             </Box>
           </Box>

@@ -39,7 +39,7 @@ import {
   Volume,
 } from 'grommet-icons';
 
-import { Responsive } from './responsive';
+import { withSmall } from '../utils/hocs';
 
 const hugeIconTheme = {
   icon: {
@@ -125,12 +125,8 @@ const messages = [
 ];
 
 class IconHero extends Component {
-  state = {
-    small: false,
-  }
-
   render() {
-    const { small } = this.state;
+    const { small } = this.props;
     const possibleMessages = messages.filter(
       (message, index) => index !== this.previousMessageIndex
     );
@@ -156,33 +152,41 @@ class IconHero extends Component {
       };
     }
     return (
-      <Responsive onChange={isSmall => this.setState({ small: isSmall })}>
-        <Box align='center' pad={small ? 'small' : 'medium'}>
-          <Box justify='center' direction='row' wrap={true}>
-            <Box margin='medium'>
-              <Icon1 key={icon1Key} className='spin' {...iconProps} />
-            </Box>
-            <Box margin='medium'>
-              <Icon2 key={icon2Key} className='spin' {...iconProps} />
-            </Box>
-            <Box margin='medium'>
-              <Icon3 key={icon3Key} className='spin' {...iconProps} />
-            </Box>
+      <Box
+        align='center'
+        justify='start'
+        pad={small ? 'medium' : 'large'}
+        style={{ minHeight: '300px' }}
+      >
+        <Box
+          justify='center'
+          direction='row'
+          wrap={true}
+          pad={{ bottom: small ? 'small' : 'large' }}
+        >
+          <Box margin='medium'>
+            <Icon1 key={icon1Key} className='spin' {...iconProps} />
           </Box>
-          <Heading
-            key={headingKey}
-            textAlign='center'
-            level={1}
-            margin='none'
-            className='fade'
-          >
-            {message.text}
-          </Heading>
-          <Heading level={3} margin='small'>SVG icons for React</Heading>
+          <Box margin='medium'>
+            <Icon2 key={icon2Key} className='spin' {...iconProps} />
+          </Box>
+          <Box margin='medium'>
+            <Icon3 key={icon3Key} className='spin' {...iconProps} />
+          </Box>
         </Box>
-      </Responsive>
+        <Heading
+          key={headingKey}
+          textAlign='center'
+          level={small ? 2 : 1}
+          margin='none'
+          className='fade-text'
+        >
+          {message.text}
+        </Heading>
+        <Heading level={3} margin='small'>SVG icons for React</Heading>
+      </Box>
     );
   }
 }
 
-export default IconHero;
+export default withSmall(IconHero);
