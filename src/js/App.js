@@ -67,7 +67,7 @@ class App extends Component {
           align='center'
           pad={{ vertical: 'small' }}
           key={`icon_${index}`}
-          style={{ minHeight: '140px' }}
+          style={{ minHeight: small ? '162px' : '144px' }}
         >
           <Icon size='large' color='plain' />
           <Text textAlign='center' margin='small' style={{ wordBreak: 'break-all' }}>
@@ -85,8 +85,8 @@ class App extends Component {
       );
       iconsNode = (
         <Box align='center'>
-          <Heading level={3}>No icon, sorry!</Heading>
-          <Text margin='small'>
+          <Heading level={3} margin='none'>No icon, sorry!</Heading>
+          <Text textAlign='center' margin='small'>
             If you believe this icon should exist in our library,
             please file an {anchorNode} and we will look into it.
           </Text>
@@ -115,7 +115,7 @@ class App extends Component {
             onInput={event => this.setState({ search: event.target.value, currentPage: 1 })}
           />
         </Box>
-        <Box justify='center' direction='row' pad={{ top: 'large' }}>
+        <Box justify='center' direction='row' pad={{ top: 'medium' }}>
           <Box basis='xlarge' wrap={true} direction='row' align='center' justify='center'>
             {iconsNode}
           </Box>

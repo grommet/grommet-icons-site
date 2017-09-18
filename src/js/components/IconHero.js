@@ -25,6 +25,8 @@ import {
   Grow,
   Gremlin,
   Java,
+  Launch,
+  LinkNext,
   LinkUp,
   Monitor,
   PersonalComputer,
@@ -32,11 +34,14 @@ import {
   Restaurant,
   Run,
   Send,
+  Star,
   Train,
+  Trophy,
   User,
   UserFemale,
   Workshop,
   Volume,
+  Vulnerability,
 } from 'grommet-icons';
 
 import { withSmall } from '../utils/hocs';
@@ -122,16 +127,28 @@ const messages = [
       Refresh, LinkUp, Volume,
     ],
   },
+  {
+    text: 'Eyes on the prize',
+    icons: [
+      Inspect, LinkNext, Trophy,
+    ],
+  },
+  {
+    text: 'Shoot for the stars',
+    icons: [
+      Launch, Vulnerability, Star,
+    ],
+  },
 ];
 
 class IconHero extends Component {
   render() {
     const { small } = this.props;
     const possibleMessages = messages.filter(
-      (message, index) => index !== this.previousMessageIndex
+      message => message !== this.previousMessage
     );
-    this.previousMessageIndex = Math.floor(Math.random() * possibleMessages.length);
-    const message = possibleMessages[this.previousMessageIndex];
+    const message = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
+    this.previousMessage = message;
 
     const Icon1 = message.icons[0];
     const Icon2 = message.icons[1];
@@ -156,7 +173,6 @@ class IconHero extends Component {
         align='center'
         justify='start'
         pad={small ? 'medium' : 'large'}
-        style={{ minHeight: '300px' }}
       >
         <Box
           justify='center'
@@ -174,15 +190,17 @@ class IconHero extends Component {
             <Icon3 key={icon3Key} className='spin' {...iconProps} />
           </Box>
         </Box>
-        <Heading
-          key={headingKey}
-          textAlign='center'
-          level={small ? 2 : 1}
-          margin='none'
-          className='fade-text'
-        >
-          {message.text}
-        </Heading>
+        <Box justify='center' basis='xsmall'>
+          <Heading
+            key={headingKey}
+            textAlign='center'
+            level={small ? 2 : 1}
+            margin='none'
+            className='fade-text'
+          >
+            {message.text}
+          </Heading>
+        </Box>
         <Heading level={3} margin='small'>SVG icons for React</Heading>
       </Box>
     );
