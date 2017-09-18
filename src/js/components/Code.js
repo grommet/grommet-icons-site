@@ -57,7 +57,6 @@ export const JSXComponent = ({ name, props = {} }) => {
       </code>
     </StyledPre>
   );
-  
 };
 
 export default { Import };
