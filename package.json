@@ -18,7 +18,8 @@
     "test": "grommet check -t",
     "test-update": "grommet check -t -- --updateSnapshot",
     "test-watch": "grommet check -t -- --watchAll",
-    "generate-html": "cross-env NODE_ENV=ssr babel-node ./tools/generate-html"
+    "generate-html": "cross-env NODE_ENV=ssr babel-node ./tools/generate-html",
+    "release-gh-pages": "cross-env NODE_ENV=ssr babel-node ./tools/release-gh-pages"
   },
   "dependencies": {
     "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
