@@ -15,7 +15,7 @@ if (process.env.CI) {
       .then(() => del([`${localFolder}/**/*`]))
       .then(() => fs.copy(localDist, localFolder))
       .then(() => git(localFolder).add(['--all', '.']))
-      .then(() => git(localFolder).commit('stable updated'))
+      .then(() => git(localFolder).commit('gh-pages updated'))
       .then(() => git(localFolder).push('origin', 'gh-pages'))
       .catch(err => console.error('failed: ', err));
   });
