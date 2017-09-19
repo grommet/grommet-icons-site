@@ -151,6 +151,7 @@ class IconHero extends Component {
     this.changeMessageInterval = setInterval(() => {
       const possibleMessages = messages.filter(m => m !== message);
       const newMessage = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
+      newMessage.key = new Date();
       this.setState({ message: newMessage });
     }, 5000); // 5 seconds
   }
@@ -170,11 +171,10 @@ class IconHero extends Component {
     const Icon2 = message.icons[1];
     const Icon3 = message.icons[2];
     // make sure to always remount to animate again
-    const timestamp = new Date();
-    const headingKey = `message_${timestamp}`;
-    const icon1Key = `icon1_${timestamp}`;
-    const icon2Key = `icon2_${timestamp}`;
-    const icon3Key = `icon3_${timestamp}`;
+    const headingKey = `message_${message.key}`;
+    const icon1Key = `icon1_${message.key}`;
+    const icon2Key = `icon2_${message.key}`;
+    const icon3Key = `icon3_${message.key}`;
     let iconProps = {
       theme: hugeIconTheme,
       size: 'xlarge',
