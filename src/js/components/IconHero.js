@@ -147,9 +147,9 @@ class IconHero extends Component {
   }
 
   componentDidMount() {
-    const { message } = this.state;
     this.changeMessageInterval = setInterval(() => {
-      const possibleMessages = messages.filter(m => m !== message);
+      const { message } = this.state;
+      const possibleMessages = messages.filter(m => m.text !== message.text);
       const newMessage = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
       newMessage.key = new Date();
       this.setState({ message: newMessage });
