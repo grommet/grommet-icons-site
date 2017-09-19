@@ -111,7 +111,7 @@ class App extends Component {
         <Box justify='center' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
           <Search
             value={search}
-            placeholder='Search 521 icons (e.g. social, delete, user)'
+            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user)`}
             onInput={event => this.setState({ search: event.target.value, currentPage: 1 })}
           />
         </Box>

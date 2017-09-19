@@ -142,13 +142,29 @@ const messages = [
 ];
 
 class IconHero extends Component {
+  state = {
+    message: messages[0],
+  }
+
+  componentDidMount() {
+    const { message } = this.state;
+    this.changeMessageInterval = setInterval(() => {
+      const possibleMessages = messages.filter(m => m !== message);
+      const newMessage = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
+      this.setState({ message: newMessage });
+    }, 5000); // 5 seconds
+  }
+
+  componentWillUnmount() {
+    if (this.changeMessageInterval) {
+      clearTimeout(this.changeMessageInterval);
+      this.changeMessageInterval = undefined;
+    }
+  }
+
   render() {
     const { small } = this.props;
-    const possibleMessages = messages.filter(
-      message => message !== this.previousMessage
-    );
-    const message = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
-    this.previousMessage = message;
+    const { message } = this.state;
 
     const Icon1 = message.icons[0];
     const Icon2 = message.icons[1];

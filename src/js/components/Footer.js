@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Box, Button, Text } from 'grommet';
 
-import { Github, GrommetOutline, Slack, Twitter } from 'grommet-icons';
+import { Github, Grommet, Slack, Twitter } from 'grommet-icons';
 
 import { withSmall } from '../utils/hocs';
 
@@ -24,12 +24,19 @@ class Footer extends Component {
             <Text>Works best with</Text>
             <Box align='start' pad={{ vertical: 'small' }}>
               <Button
-                primary={true}
-                icon={<GrommetOutline />}
-                label='Grommet'
-                href='http://grommet.io'
+                href='https://grommet.github.io'
                 target='_blank'
-              />
+                box={true}
+                background='brand'
+                direction='row'
+                pad='small'
+                border={{ radius: 'large' }}
+              >
+                <Grommet />
+                <Box margin={{ left: 'small' }}>
+                  <Text><strong>grommet</strong></Text>
+                </Box>
+              </Button>
             </Box>
             <Text>
               Documentation licensed under CC BY 4.0
