@@ -1,21 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledCode = styled.span`
-  color: #333333;
-`;
-
-const StyledComponent = styled.span`
-  color: #00CCEB;
-`;
-
-const StyledProp = styled.span`
-  color: #FF7D28;
-`;
-
-const StyledPropValue = styled.span`
-color: #DC2878;
-`;
+import { Text } from 'grommet';
 
 const StyledPre = styled.pre`
   font-size: 16px;
@@ -27,13 +13,13 @@ const StyledPre = styled.pre`
 export const Import = ({ component }) => (
   <StyledPre>
     <code>
-      <StyledCode>{'import'}</StyledCode>
-      <StyledCode>{' { '}</StyledCode>
-      <StyledComponent>{` ${component} `}</StyledComponent>
-      <StyledCode>{' } '}</StyledCode>
-      <StyledCode>{' from '}</StyledCode>
-      <StyledProp>{' \'grommet-icons\''}</StyledProp>
-      <StyledCode>{';'}</StyledCode>
+      <Text color='dark-1'>{'import'}</Text>
+      <Text color='dark-1'>{' { '}</Text>
+      <Text color='accent-1'>{`${component}`}</Text>
+      <Text color='dark-1'>{' } '}</Text>
+      <Text color='dark-1'>{'from '}</Text>
+      <Text color='accent-2'>{'\'grommet-icons\''}</Text>
+      <Text color='dark-1'>{';'}</Text>
     </code>
   </StyledPre>
 );
@@ -41,19 +27,19 @@ export const Import = ({ component }) => (
 export const JSXComponent = ({ name, props = {} }) => {
   const propsNode = Object.keys(props).map((prop, index) => (
     [
-      <StyledProp key={`propName_${index}`}>{` ${prop}`}</StyledProp>,
-      <StyledCode key={`propOperator_${index}`}>{'=\''}</StyledCode>,
-      <StyledPropValue key={`propValue_${index}`}>{props[prop]}</StyledPropValue>,
-      <StyledCode key={`propQuote_${index}`}>{'\''}</StyledCode>,
+      <Text color='accent-2' key={`propName_${index}`}>{` ${prop}`}</Text>,
+      <Text color='dark-1' key={`propOperator_${index}`}>{'=\''}</Text>,
+      <Text color='neutral-2' key={`propValue_${index}`}>{props[prop]}</Text>,
+      <Text color='dark-1' key={`propQuote_${index}`}>{'\''}</Text>,
     ]
   ));
   return (
     <StyledPre>
       <code>
-        <StyledCode>{'<'}</StyledCode>
-        <StyledComponent>{name}</StyledComponent>
+        <Text color='dark-1'>{'<'}</Text>
+        <Text color='accent-1'>{name}</Text>
         {propsNode}
-        <StyledCode>{' /> '}</StyledCode>
+        <Text color='dark-1'>{' /> '}</Text>
       </code>
     </StyledPre>
   );

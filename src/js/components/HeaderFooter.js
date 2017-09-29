@@ -1,29 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { Box, Text } from 'grommet';
-
-const WrapPre = styled.pre`
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  text-align: center;
-`;
 
 const HeaderFooter = () => (
   <Box tag='footer' align='center' pad={{ horizontal: 'small' }}>
     <Box pad={{ vertical: 'large' }}>
       <Box
-        border={{ radius: 'xlarge' }}
+        round='large'
         background={{ color: 'dark-1', opacity: 'strong' }}
-        pad={{ horizontal: 'large' }}
+        pad={{ horizontal: 'large', vertical: 'small' }}
       >
-        <WrapPre>
-          <code>
-            <Text textAlign='center' size='large'>
-              <strong>npm install grommet-icons</strong>
-            </Text>
-          </code>
-        </WrapPre>
+        <Text textAlign='center' size='large' style={{ fontFamily: 'monospace' }}>
+          <strong>npm install grommet-icons</strong>
+        </Text>
       </Box>
     </Box>
   </Box>

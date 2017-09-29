@@ -69,25 +69,25 @@ const IconExample = ({ name, icon, small }) => {
           basis='1/2'
         >
           <Box
+            round='medium'
             align='center'
             margin='small'
             pad='large'
             background='light-1'
-            border={{ radius: 'large' }}
           >
             <Component color='plain' size='xlarge' className='fade-icon' />
           </Box>
           <Box align='start' direction='row'>
             <Box align='start'>
-              <Box margin='small' pad='medium' background='light-1' border={{ radius: 'large' }}>
+              <Box margin='small' pad='medium' background='light-1' round='medium'>
                 <Component size='large' className='fade-icon' />
               </Box>
-              <Box margin='small' pad='small' background='light-1' border={{ radius: 'large' }}>
+              <Box margin='small' pad='small' background='light-1' round='small'>
                 <Component color='brand' className='fade-icon' />
               </Box>
             </Box>
             <Box align='start'>
-              <Box margin='small' pad='small' background='light-1' border={{ radius: 'large' }}>
+              <Box margin='small' pad='small' background='light-1' round='small'>
                 <Component className='fade-icon' />
               </Box>
             </Box>

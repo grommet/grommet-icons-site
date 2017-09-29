@@ -114,7 +114,8 @@ class SearchComponent extends Component {
         direction='row'
         align='center'
         alignContent='stretch'
-        border={{ radius: 'xlarge', size: 'small', ...borderStyle }}
+        round='medium'
+        border={{ size: 'small', ...borderStyle }}
         pad={{ horizontal: 'medium' }}
         onFocus={() => this.setState({ borderStyle: focusBorderStyle, boxStyle: focusBoxStyle })}
         onBlur={() => this.setState({ borderStyle: baseBorderStyle, boxStyle: baseBoxStyle })}

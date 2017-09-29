@@ -24,19 +24,12 @@ class Footer extends Component {
             <Text>Works best with</Text>
             <Box align='start' pad={{ vertical: 'small' }}>
               <Button
+                primary={true}
                 href='https://grommet.github.io'
                 target='_blank'
-                box={true}
-                background='brand'
-                direction='row'
-                pad='small'
-                border={{ radius: 'large' }}
-              >
-                <Grommet />
-                <Box margin={{ left: 'small' }}>
-                  <Text><strong>grommet</strong></Text>
-                </Box>
-              </Button>
+                icon={<Grommet />}
+                label='grommet'
+              />
             </Box>
             <Text>
               Documentation licensed under CC BY 4.0

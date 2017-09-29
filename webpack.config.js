@@ -67,7 +67,7 @@ if (env === 'production') {
     historyApiFallback: true,
   };
   if (useAlias) {
-    console.log('Using alias to local grommet.');
+    console.log('Using alias to local grommet and grommet-icons.');
     alias = {
       'grommet': path.resolve(__dirname, '../grommet/src/js'),
       'grommet-icons': path.resolve(__dirname, '../grommet-icons/src/js'),
