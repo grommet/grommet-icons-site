@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Box, Heading } from 'grommet';
 
 import {
+  Ascend,
   Alarm,
   Article,
   Bar,
@@ -13,8 +14,12 @@ import {
   Car,
   Cart,
   ChatOption,
+  Cursor,
   Configure,
+  Currency,
+  Descend,
   Diamond,
+  Drag,
   Edit,
   EmptyCircle,
   Inspect,
@@ -22,10 +27,15 @@ import {
   InProgress,
   Gamepad,
   Gift,
+  Group,
   Grow,
   Gremlin,
+  Home,
+  IceCream,
+  Install,
   Java,
   Launch,
+  Like,
   LinkNext,
   LinkUp,
   Monitor,
@@ -33,9 +43,14 @@ import {
   Refresh,
   Restaurant,
   Run,
+  Search,
   Send,
   Star,
+  Swim,
+  Ticket,
+  Tools,
   Train,
+  TreeOption,
   Trophy,
   User,
   UserFemale,
@@ -116,7 +131,7 @@ const messages = [
     ],
   },
   {
-    text: 'Well read',
+    text: 'Be well read',
     icons: [
       Catalog, CatalogOption, Article,
     ],
@@ -139,6 +154,42 @@ const messages = [
       Launch, Vulnerability, Star,
     ],
   },
+  {
+    text: 'Try a triathlon',
+    icons: [
+      Bike, Run, Swim,
+    ],
+  },
+  {
+    text: 'We like ice cream',
+    icons: [
+      Group, Like, IceCream,
+    ],
+  },
+  {
+    text: 'Click, drag, and drop',
+    icons: [
+      Cursor, Drag, Install,
+    ],
+  },
+  {
+    text: 'Build a tree house',
+    icons: [
+      Tools, TreeOption, Home,
+    ],
+  },
+  {
+    text: 'Buy a meal ticket',
+    icons: [
+      Currency, Cafeteria, Ticket,
+    ],
+  },
+  {
+    text: 'Search high and low',
+    icons: [
+      Search, Ascend, Descend,
+    ],
+  }
 ];
 
 class IconHero extends Component {
