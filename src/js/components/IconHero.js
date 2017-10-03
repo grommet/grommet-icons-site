@@ -189,7 +189,7 @@ const messages = [
     icons: [
       Search, Ascend, Descend,
     ],
-  }
+  },
 ];
 
 class IconHero extends Component {
