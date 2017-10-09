@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Box, Heading } from 'grommet';
 
 import {
+  Achievement,
   Ascend,
   Alarm,
   Article,
@@ -14,16 +15,21 @@ import {
   Car,
   Cart,
   ChatOption,
+  Chrome,
+  Compass,
   Cursor,
   Configure,
   Currency,
   Descend,
   Diamond,
+  Directions,
   Drag,
+  Edge,
   Edit,
   EmptyCircle,
   Inspect,
   Favorite,
+  Firefox,
   InProgress,
   Gamepad,
   Gift,
@@ -32,6 +38,7 @@ import {
   Gremlin,
   Home,
   IceCream,
+  InternetExplorer,
   Install,
   Java,
   Launch,
@@ -39,6 +46,7 @@ import {
   LinkNext,
   LinkUp,
   Monitor,
+  Opera,
   PersonalComputer,
   Refresh,
   Restaurant,
@@ -157,7 +165,7 @@ const messages = [
   {
     text: 'Try a triathlon',
     icons: [
-      Bike, Run, Swim,
+      Swim, Bike, Run,
     ],
   },
   {
@@ -179,7 +187,7 @@ const messages = [
     ],
   },
   {
-    text: 'Buy a meal ticket',
+    text: 'Buy your meal ticket',
     icons: [
       Currency, Cafeteria, Ticket,
     ],
@@ -188,6 +196,24 @@ const messages = [
     text: 'Search high and low',
     icons: [
       Search, Ascend, Descend,
+    ],
+  },
+  {
+    text: 'Cross-browser, of course',
+    icons: [
+      Edge, Chrome, Firefox,
+    ],
+  },
+  {
+    text: 'Cross-browser, of course',
+    icons: [
+      InternetExplorer, Chrome, Opera,
+    ],
+  },
+  {
+    text: 'Chart a course to success',
+    icons: [
+      Compass, Directions, Achievement,
     ],
   },
 ];
