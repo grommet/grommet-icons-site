@@ -39,3 +39,17 @@ To run this application, execute the following commands:
     ```
     $ npm test
     ```
+## Try
+A large collection of tags have been associated with this icon set for improved searching.
+
+Try entering these in the search box:
+```
+arrow
+browser
+code
+person
+sport
+player
+logo
+hand
+hands
