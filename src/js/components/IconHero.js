@@ -51,6 +51,7 @@ import {
   Refresh,
   Restaurant,
   Run,
+  SafariOption,
   Search,
   Send,
   Star,
@@ -207,7 +208,7 @@ const messages = [
   {
     text: 'Cross-browser, of course',
     icons: [
-      InternetExplorer, Chrome, Opera,
+      InternetExplorer, SafariOption, Opera,
     ],
   },
   {

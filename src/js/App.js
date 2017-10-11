@@ -52,7 +52,9 @@ class App extends Component {
     let iconsNode = iconKeys
       .filter(icon => (
         icon.toLowerCase().match(search.toLowerCase()) ||
-        (metadata[icon] || []).some(synonym => synonym.toLowerCase().match(search.toLowerCase()))
+        (metadata[icon] || []).some(
+          synonym => synonym.substr(0, search.length).toLowerCase() === search.toLowerCase()
+        )
       ));
 
     iconsNode = iconsNode.map((icon, index) => {
@@ -111,7 +113,7 @@ class App extends Component {
         <Box justify='center' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
           <Search
             value={search}
-            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user)`}
+            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
             onInput={event => this.setState({ search: event.target.value, currentPage: 1 })}
           />
         </Box>
