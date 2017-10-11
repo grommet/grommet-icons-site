@@ -52,7 +52,9 @@ class App extends Component {
     let iconsNode = iconKeys
       .filter(icon => (
         icon.toLowerCase().match(search.toLowerCase()) ||
-        (metadata[icon] || []).some(synonym => synonym.toLowerCase().match(search.toLowerCase()))
+        (metadata[icon] || []).some(
+          synonym => synonym.substr(0, search.length).toLowerCase() === search.toLowerCase()
+        )
       ));
 
     iconsNode = iconsNode.map((icon, index) => {
