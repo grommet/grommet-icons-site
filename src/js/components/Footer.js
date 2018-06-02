@@ -25,7 +25,7 @@ class Footer extends Component {
             <Box align='start' pad={{ vertical: 'small' }}>
               <Button
                 primary={true}
-                href='https://grommet.github.io'
+                href='https://v2.grommet.io'
                 target='_blank'
                 icon={<Grommet />}
                 label='grommet'

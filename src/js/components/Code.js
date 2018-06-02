@@ -13,13 +13,13 @@ const StyledPre = styled.pre`
 export const Import = ({ component }) => (
   <StyledPre>
     <code>
-      <Text color='dark-1'>{'import'}</Text>
+      <Text color='dark-1'>import</Text>
       <Text color='dark-1'>{' { '}</Text>
       <Text color='accent-1'>{`${component}`}</Text>
       <Text color='dark-1'>{' } '}</Text>
-      <Text color='dark-1'>{'from '}</Text>
+      <Text color='dark-1'>from </Text>
       <Text color='accent-2'>{'\'grommet-icons\''}</Text>
-      <Text color='dark-1'>{';'}</Text>
+      <Text color='dark-1'>;</Text>
     </code>
   </StyledPre>
 );

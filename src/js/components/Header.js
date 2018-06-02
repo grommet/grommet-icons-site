@@ -19,7 +19,7 @@ const Header = () => (
     </Box>
     <Box pad={{ vertical: 'medium', horizontal: 'small' }}>
       <Button
-        a11yTitle='See Grommet icons github'
+        a11yTitle='Go to grommet-icons on GitHub'
         target='_blank'
         href='https://github.com/grommet/grommet-icons'
         icon={<Github size='large' />}

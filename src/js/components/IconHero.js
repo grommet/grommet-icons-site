@@ -66,15 +66,16 @@ import {
   Workshop,
   Volume,
   Vulnerability,
+  ThemeContext,
 } from 'grommet-icons';
 
 import { withSmall } from '../utils/hocs';
 
-const hugeIconTheme = {
-  icon: {
-    size: {
-      xlarge: '176px',
-    },
+const theme = {
+  color: '#FFFFFF',
+  size: {
+    large: '96px',
+    xlarge: '176px',
   },
 };
 
@@ -253,50 +254,47 @@ class IconHero extends Component {
     const icon1Key = `icon1_${message.key}`;
     const icon2Key = `icon2_${message.key}`;
     const icon3Key = `icon3_${message.key}`;
-    let iconProps = {
-      theme: hugeIconTheme,
-      size: 'xlarge',
-    };
+    let iconProps = { size: 'xlarge' };
     if (small) {
-      iconProps = {
-        size: 'large',
-      };
+      iconProps = { size: 'large' };
     }
     return (
-      <Box
-        align='center'
-        justify='start'
-        pad={small ? 'medium' : 'large'}
-      >
+      <ThemeContext.Provider value={theme}>
         <Box
-          justify='center'
-          direction='row'
-          wrap={true}
-          pad={{ bottom: small ? 'small' : 'large' }}
+          align='center'
+          justify='start'
+          pad={small ? 'medium' : 'large'}
         >
-          <Box margin='medium'>
-            <Icon1 key={icon1Key} className='spin' {...iconProps} />
-          </Box>
-          <Box margin='medium'>
-            <Icon2 key={icon2Key} className='spin' {...iconProps} />
-          </Box>
-          <Box margin='medium'>
-            <Icon3 key={icon3Key} className='spin' {...iconProps} />
-          </Box>
-        </Box>
-        <Box justify='center' basis='xsmall'>
-          <Heading
-            key={headingKey}
-            textAlign='center'
-            level={small ? 2 : 1}
-            margin='none'
-            className='fade-text'
+          <Box
+            justify='center'
+            direction='row'
+            wrap={true}
+            pad={{ bottom: small ? 'small' : 'large' }}
           >
-            {message.text}
-          </Heading>
+            <Box margin='medium'>
+              <Icon1 key={icon1Key} className='spin' {...iconProps} />
+            </Box>
+            <Box margin='medium'>
+              <Icon2 key={icon2Key} className='spin' {...iconProps} />
+            </Box>
+            <Box margin='medium'>
+              <Icon3 key={icon3Key} className='spin' {...iconProps} />
+            </Box>
+          </Box>
+          <Box justify='center' basis='xsmall'>
+            <Heading
+              key={headingKey}
+              textAlign='center'
+              level={small ? 2 : 1}
+              margin='none'
+              className='fade-text'
+            >
+              {message.text}
+            </Heading>
+          </Box>
+          <Heading level={3} margin='small'>SVG icons for React</Heading>
         </Box>
-        <Heading level={3} margin='small'>SVG icons for React</Heading>
-      </Box>
+      </ThemeContext.Provider>
     );
   }
 }

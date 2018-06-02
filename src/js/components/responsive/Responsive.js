@@ -8,10 +8,6 @@ class Responsive extends Component {
     onChange: PropTypes.func.isRequired,
   }
 
-  state = {
-    small: false,
-  }
-
   constructor() {
     super();
     this.check = this.check.bind(this);

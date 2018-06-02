@@ -4,9 +4,6 @@
     "styled-components"
   ],
   "env": {
-    "development": {
-      "presets": ["react-hmre"]
-    },
     "production": {
       "plugins": ["grommet"]
     }

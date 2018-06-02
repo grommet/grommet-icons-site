@@ -3,21 +3,19 @@
   "version": "0.1.0",
   "main": "src/js/index.js",
   "description": "website for grommet icons",
-  "homepage": "https://grommet.github.io/grommet-icons/",
-  "bugs": "https://github.com/grommet/grommet-icons/issues",
+  "homepage": "https://grommet.github.io/grommet-icons-site/",
+  "bugs": "https://github.com/grommet/grommet-icons-site/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grommet/grommet-icons.git"
+    "url": "https://github.com/grommet/grommet-icons-site.git"
   },
   "license": "Apache-2.0",
   "scripts": {
-    "check": "cross-env NODE_ENV=test grommet check",
-    "dev": "cross-env NODE_ENV=development grommet pack",
-    "dev-alias": "cross-env NODE_ENV=development USE_ALIAS=true grommet pack",
-    "dist": "cross-env NODE_ENV=production grommet pack && npm run generate-html",
-    "test": "grommet check -t",
-    "test-update": "grommet check -t -- --updateSnapshot",
-    "test-watch": "grommet check -t -- --watchAll",
+    "start": "webpack-dev-server --mode development --open",
+    "start-alias": "cross-env USE_ALIAS=true webpack-dev-server --mode development --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "build-alias": "cross-env USE_ALIAS=true NODE_ENV=production webpack --mode production",
+    "lint": "eslint src",
     "generate-html": "cross-env NODE_ENV=ssr babel-node ./tools/generate-html",
     "release-gh-pages": "cross-env NODE_ENV=ssr babel-node ./tools/release-gh-pages"
   },
@@ -25,17 +23,17 @@
     "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
     "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable",
     "prop-types": "^15.5.10",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "styled-components": "^2.1.1"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "styled-components": "^3.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.5.2",
     "babel-eslint": "^8.0.0",
-    "babel-jest": "^21.0.0",
+    "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.1",
-    "babel-plugin-grommet": "^0.4.0",
+    "babel-plugin-grommet": "^0.5.2",
     "babel-plugin-styled-components": "^1.2.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.16.0",
@@ -45,19 +43,20 @@
     "cross-env": "^5.0.1",
     "deep-assign": "^2.0.0",
     "eslint": "^4.3.0",
-    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-parallel": "^0.3.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
-    "fs-extra": "^4.0.2",
-    "grommet-cli": "^5.1.0",
+    "fs-extra": "^6.0.1",
     "html-minifier": "^3.5.5",
     "pre-commit": "^1.2.2",
-    "react-dev-utils": "^0.4.2",
+    "react-dev-utils": "^5.0.1",
     "react-test-renderer": "^16.0.0",
     "simple-git": "^1.77.0",
-    "webpack": "^3.4.1",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.5",
+    "webpack-dev-server": "^3.1.4",
     "write-file-webpack-plugin": "^4.1.0"
   },
   "jest": {
@@ -77,6 +76,6 @@
     ]
   },
   "pre-commit": [
-    "check"
+    "lint"
   ]
 }

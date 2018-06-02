@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 
 import { Box, TextInput } from 'grommet';
 
@@ -38,9 +37,8 @@ function searchToObject(search) {
 }
 
 function serialize(obj) {
-  const serializedStr = Object.keys(obj).map(
-    k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`
-  ).join('&');
+  const serializedStr = Object.keys(obj).map(k =>
+    `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`).join('&');
   if (serializedStr === '') {
     return '';
   }
@@ -48,6 +46,8 @@ function serialize(obj) {
 }
 
 class SearchComponent extends Component {
+  inputRef = React.createRef()
+
   constructor(props, context) {
     super(props, context);
 
@@ -61,53 +61,34 @@ class SearchComponent extends Component {
   componentDidMount() {
     const value = searchToObject(window.location.search).s;
     if (value) {
-      /* eslint-disable react/no-did-mount-set-state */
-      this.setState({ value }, () => {
-        this.fireChange();
-      });
-      /* eslint-enable react/no-did-mount-set-state */
+      this.setState({ value }); // eslint-disable-line
     }
   }
 
-  updateSearchLocation() {
+  updateLocation = () => {
     const { value } = this.state;
-
-    const query = searchToObject(window.location.search);
-    query.s = encodeURIComponent(value);
-    if (query.s === '') {
-      delete query.s;
-    }
     // throttle when user is typing
     clearTimeout(this.searchTimer);
     this.searchTimer = setTimeout(() => {
+      const query = searchToObject(window.location.search);
+      query.s = encodeURIComponent(value);
+      if (query.s === '') {
+        delete query.s;
+      }
       window.history.replaceState(query, '', `${window.location.pathname}${serialize(query)}`);
     }, 200);
   }
 
-  fireChange() {
+  onInput = (event, ...args) => {
     const { onInput } = this.props;
+    this.setState({ value: event.target.value }, this.updateLocation);
     if (onInput) {
-      let event;
-      try {
-        event = new Event('change', {
-          'bubbles': true,
-          'cancelable': true,
-        });
-      } catch (e) {
-        // IE11 workaround.
-        event = document.createEvent('Event');
-        event.initEvent('change', true, true);
-      }
-      // We use dispatchEvent to have the browser fill out the event fully.
-      findDOMNode(this.inputRef).querySelector('input').dispatchEvent(event);
-      // Manually dispatched events aren't delivered by React, so we notify too.
-      onInput(event);
+      onInput(event, ...args);
     }
   }
 
   render() {
     const { borderStyle, boxStyle, value } = this.state;
-    const { onInput } = this.props;
     return (
       <Box
         basis='large'
@@ -123,19 +104,11 @@ class SearchComponent extends Component {
       >
         <Search color='brand' />
         <TextInput
-          ref={(ref) => {
-            this.inputRef = ref;
-          }}
           plain={true}
           type='search'
           {...this.props}
           value={value}
-          onInput={(event, ...args) => {
-            this.setState({ value: event.target.value }, () => this.updateSearchLocation());
-            if (onInput) {
-              onInput(event, ...args);
-            }
-          }}
+          onInput={this.onInput}
         />
       </Box>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Anchor, Box, Grommet, Heading, Text } from 'grommet';
+import { Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Text } from 'grommet';
 
 import * as Icons from 'grommet-icons';
 import metadata from 'grommet-icons/metadata';
@@ -15,17 +15,9 @@ import Search from './components/Search';
 
 import { withSmall } from './utils/hocs';
 
-const iconKeys = Object.keys(Icons).filter(
-  icon => Icons[icon] && icon !== 'default' && Icons[icon] !== true
-);
-
-const theme = {
-  global: {
-    colors: {
-      darkBackgroundTextColor: '#FFFFFF',
-    },
-  },
-};
+const iconKeys = Object.keys(Icons).filter(icon =>
+  Icons[icon] && icon !== 'default' && icon !== 'ThemeContext' &&
+  Icons[icon] !== true);
 
 class App extends Component {
   state = {
@@ -49,58 +41,24 @@ class App extends Component {
   render() {
     const { small } = this.props;
     const { iconName, search } = this.state;
-    let iconsNode = iconKeys
+
+    const icons = iconKeys
       .filter(icon => (
         icon.toLowerCase().match(search.toLowerCase()) ||
-        (metadata[icon] || []).some(
-          synonym => synonym.substr(0, search.length).toLowerCase() === search.toLowerCase()
-        )
-      ));
-
-    iconsNode = iconsNode.map((icon, index) => {
-      const Icon = Icons[icon];
-      const label = search ? icon.replace(
-          new RegExp(search, 'ig'), text => (text ? `<strong>${text}</strong>` : '')
-        ) : icon;
-      return (
-        <Box
-          basis={small ? 'xsmall' : 'small'}
-          justify='start'
-          align='center'
-          pad={{ vertical: 'small' }}
-          key={`icon_${index}`}
-          style={{ minHeight: small ? '162px' : '144px' }}
-        >
-          <Icon size='large' color='plain' />
-          <Text textAlign='center' margin='small' style={{ wordBreak: 'break-all' }}>
-            <span dangerouslySetInnerHTML={{ __html: label }} />
-          </Text>
-        </Box>
-      );
-    });
-
-    if (iconsNode.length === 0) {
-      const anchorNode = (
-        <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
-          issue
-        </Anchor>
-      );
-      iconsNode = (
-        <Box align='center'>
-          <Heading level={3} margin='none'>No icon, sorry!</Heading>
-          <Text textAlign='center' margin='small'>
-            If you believe this icon should exist in our library,
-            please file an {anchorNode} and we will look into it.
-          </Text>
-          <Box pad={{ top: 'medium' }}>
-            <Gremlin />
-          </Box>
-        </Box>
-      );
-    }
+        (metadata[icon] || []).some(synonym =>
+          synonym.substr(0, search.length).toLowerCase() === search.toLowerCase())
+      ))
+      .map(icon => ({
+        name: icon,
+        Icon: Icons[icon],
+        label: search ? icon.replace(
+          new RegExp(search, 'ig'),
+          text => (text ? `<strong>${text}</strong>` : '')
+        ) : icon,
+      }));
 
     return (
-      <Grommet theme={theme}>
+      <Grommet>
         <Box background='brand'>
           <Header />
           <IconHero />
@@ -114,12 +72,50 @@ class App extends Component {
           <Search
             value={search}
             placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
-            onInput={event => this.setState({ search: event.target.value, currentPage: 1 })}
+            onInput={event => this.setState({ search: event.target.value })}
           />
         </Box>
         <Box justify='center' direction='row' pad={{ top: 'medium' }}>
-          <Box basis='xlarge' wrap={true} direction='row' align='center' justify='center'>
-            {iconsNode}
+          <Box basis='xlarge'>
+            <Grid columns='small'>
+              {icons.length > 0 ? (
+                <InfiniteScroll items={icons}>
+                  {({ label, Icon, name }) => (
+                    <Box
+                      basis={small ? 'xsmall' : 'small'}
+                      justify='start'
+                      align='center'
+                      pad={{ vertical: 'small' }}
+                      key={name}
+                      style={{ minHeight: small ? '162px' : '144px' }}
+                    >
+                      <Icon size='large' color='plain' />
+                      <Text
+                        textAlign='center'
+                        margin='small'
+                        style={{ wordBreak: 'break-all' }}
+                      >
+                        <span dangerouslySetInnerHTML={{ __html: label }} />
+                      </Text>
+                    </Box>
+                  )}
+                </InfiniteScroll>
+              ) : (
+                <Box align='center'>
+                  <Heading level={3} margin='none'>No icon, sorry!</Heading>
+                  <Text textAlign='center' margin='small'>
+                    If you believe this icon should exist in our library,
+                    please file an
+                    <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
+                      issue
+                    </Anchor> and we will look into it.
+                  </Text>
+                  <Box pad={{ top: 'medium' }}>
+                    <Gremlin />
+                  </Box>
+                </Box>
+              )}
+            </Grid>
           </Box>
         </Box>
         <Footer />
