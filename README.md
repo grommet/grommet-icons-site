@@ -10,22 +10,16 @@ To run this application, execute the following commands:
     $ npm install (or yarn install)
     ```
 
-  2. Start the back-end server:
+  3. Start development:
 
     ```
-    $ npm run dev-server
+    $ npm run start
     ```
 
-  3. Start the front-end dev server:
+  4. Create the app distribution
 
     ```
-    $ npm run dev
-    ```
-
-  4. Create the app distribution to be used by a back-end server
-
-    ```
-    $ NODE_ENV=production grommet pack
+    $ npm run build
     ```
 
   5. Start the server in production mode:
