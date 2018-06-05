@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Text } from 'grommet';
+import { Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Paragraph, Text } from 'grommet';
 
 import * as Icons from 'grommet-icons';
 import metadata from 'grommet-icons/metadata';
@@ -103,13 +103,13 @@ class App extends Component {
               ) : (
                 <Box align='center'>
                   <Heading level={3} margin='none'>No icon, sorry!</Heading>
-                  <Text textAlign='center' margin='small'>
+                  <Paragraph textAlign='center' margin='small'>
                     If you believe this icon should exist in our library,
                     please file an
                     <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
                       issue
                     </Anchor> and we will look into it.
-                  </Text>
+                  </Paragraph>
                   <Box pad={{ top: 'medium' }}>
                     <Gremlin />
                   </Box>

@@ -1619,8 +1619,8 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000847"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000847.tgz#be77f439be29bbc57ae08004b1e470b653b1ec1d"
+  version "1.0.30000848"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000848.tgz#ec9c0a72ec8f9ef812e4f4b8628625af9c85ade0"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -2310,7 +2310,7 @@ doctrine@1.5.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-doctrine@^2.0.2, doctrine@^2.1.0:
+doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   dependencies:
@@ -2552,13 +2552,13 @@ eslint-plugin-jsx-a11y@^6.0.2:
     jsx-ast-utils "^2.0.0"
 
 eslint-plugin-react@^7.1.0:
-  version "7.8.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.8.2.tgz#e95c9c47fece55d2303d1a67c9d01b930b88a51d"
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.9.1.tgz#101aadd15e7c7b431ed025303ac7b421a8e3dc15"
   dependencies:
-    doctrine "^2.0.2"
-    has "^1.0.1"
+    doctrine "^2.1.0"
+    has "^1.0.2"
     jsx-ast-utils "^2.0.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.1"
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"
@@ -3065,7 +3065,7 @@ fsevents@^1.0.0, fsevents@^1.1.2:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
 
-function-bind@^1.0.2, function-bind@^1.1.1:
+function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
@@ -3299,22 +3299,17 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-grommet-icons@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/grommet-icons/-/grommet-icons-1.0.0.tgz#b1bb961573e37684d231d577e2f845f3c84b8cb9"
-
 "grommet-icons@https://github.com/grommet/grommet-icons/tarball/stable":
   version "1.0.0"
-  resolved "https://github.com/grommet/grommet-icons/tarball/stable#ce1c4980b138a7fdef4e177dd429a2f0f5cbaf02"
+  resolved "https://github.com/grommet/grommet-icons/tarball/stable#989e574b14998120a91ff2802ce26f884629bdb5"
   dependencies:
     codeclimate-test-reporter "^0.5.0"
 
 "grommet@https://github.com/grommet/grommet/tarball/NEXT-stable":
-  version "2.0.0-beta.2"
-  resolved "https://github.com/grommet/grommet/tarball/NEXT-stable#977e5cad8e8038c4915a4d24caa4b43a9f64221f"
+  version "2.0.0-beta.3"
+  resolved "https://github.com/grommet/grommet/tarball/NEXT-stable#3bc3c1d7fb12df9db8c39f70d66d012c3640b15e"
   dependencies:
     babel-plugin-grommet "^0.5.1"
-    grommet-icons "^1.0.0"
     markdown-to-jsx "^6.6.6"
     node-emoji "^1.8.1"
     polished "^1.3.0"
@@ -3411,11 +3406,11 @@ has-values@^1.0.0:
     is-number "^3.0.0"
     kind-of "^4.0.0"
 
-has@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/has/-/has-1.0.1.tgz#8461733f538b0837c9361e39a9ab9e9704dc2f28"
+has@^1.0.1, has@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
   dependencies:
-    function-bind "^1.0.2"
+    function-bind "^1.1.1"
 
 hash-base@^3.0.0:
   version "3.0.4"
@@ -4539,7 +4534,11 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@>= 1.33.0 < 2", mime-db@~1.33.0:
+"mime-db@>= 1.33.0 < 2":
+  version "1.34.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.34.0.tgz#452d0ecff5c30346a6dc1e64b1eaee0d3719ff9a"
+
+mime-db@~1.33.0:
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
 
@@ -5336,7 +5335,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -6427,8 +6426,8 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 styled-components@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.3.0.tgz#335b1b2b673b416cd5ec012010e237ed1f877fe9"
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.3.2.tgz#087b96830ee3d60d9a8b5ef17c132b4f29cc71df"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
@@ -6786,11 +6785,17 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
-util@0.10.3, util@^0.10.3:
+util@0.10.3:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
   dependencies:
     inherits "2.0.1"
+
+util@^0.10.3:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/util/-/util-0.10.4.tgz#3aa0125bfe668a4672de58857d3ace27ecb76901"
+  dependencies:
+    inherits "2.0.3"
 
 utils-merge@1.0.1:
   version "1.0.1"
