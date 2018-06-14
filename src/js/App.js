@@ -65,7 +65,7 @@ class App extends Component {
           <HeaderFooter />
         </Box>
         <IconExample name={iconName} icon={Icons[iconName]} />
-        <Box align='center' pad={{ horizontal: 'medium' }}>
+        <Box>
           <Heading textAlign='center'>Looking for something in particular?</Heading>
         </Box>
         <Box justify='center' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>

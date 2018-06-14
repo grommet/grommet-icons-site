@@ -8,11 +8,11 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import App from '../src/js/App';
 
 const sheet = new ServerStyleSheet();
-const html = renderToString(
+const html = renderToString((
   <StyleSheetManager sheet={sheet.instance}>
     <App />
   </StyleSheetManager>
-);
+));
 
 const styles = sheet.getStyleTags();
 
@@ -134,13 +134,12 @@ const ssrHTML = `<!DOCTYPE html>
 </html>
 `;
 
-fs.writeFile(
-  path.resolve('dist/index.html'), minify(
-    ssrHTML, {
-      removeAttributeQuotes: true,
-      collapseWhitespace: true,
-      minifyCSS: true,
-      removeEmptyAttributes: true,
-    },
-  )
+fs.writeFileSync(
+  path.resolve('dist/index.html'),
+  minify(ssrHTML, {
+    removeAttributeQuotes: true,
+    collapseWhitespace: true,
+    minifyCSS: true,
+    removeEmptyAttributes: true,
+  })
 );

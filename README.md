@@ -22,17 +22,12 @@ To run this application, execute the following commands:
     $ npm run build
     ```
 
-  5. Start the server in production mode:
+  6. Run linters:
 
     ```
-    $ npm start
+    $ npm run lint
     ```
 
-  6. Test and run linters:
-
-    ```
-    $ npm test
-    ```
 ## Try
 A large collection of tags have been associated with this icon set for improved searching.
 
