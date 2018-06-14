@@ -2988,13 +2988,13 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
 
 "grommet-icons@https://github.com/grommet/grommet-icons/tarball/stable":
   version "1.0.0"
-  resolved "https://github.com/grommet/grommet-icons/tarball/stable#989e574b14998120a91ff2802ce26f884629bdb5"
+  resolved "https://github.com/grommet/grommet-icons/tarball/stable#b5158bfaf248a6b087f8849c6f58174121b1471c"
   dependencies:
     codeclimate-test-reporter "^0.5.0"
 
 "grommet@https://github.com/grommet/grommet/tarball/NEXT-stable":
   version "2.0.0-beta.3"
-  resolved "https://github.com/grommet/grommet/tarball/NEXT-stable#6a779a9c4a53ace02d1a28cecea9a2192641ec62"
+  resolved "https://github.com/grommet/grommet/tarball/NEXT-stable#ee35d6435a1a2d948860cd5a9b637d1cda4dddb2"
   dependencies:
     babel-plugin-grommet "^0.5.1"
     markdown-to-jsx "^6.6.6"
