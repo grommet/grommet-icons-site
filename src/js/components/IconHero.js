@@ -268,7 +268,7 @@ class IconHero extends Component {
           <Box
             justify='center'
             direction='row'
-            wrap={true}
+            wrap
             pad={{ bottom: small ? 'small' : 'large' }}
           >
             <Box margin='medium'>

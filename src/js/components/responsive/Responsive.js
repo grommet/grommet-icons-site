@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const PALM_END = 480;
 class Responsive extends Component {
   static propTypes = {
+    children: PropTypes.node.isRequired,
     onChange: PropTypes.func.isRequired,
   }
 

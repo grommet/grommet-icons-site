@@ -7,6 +7,7 @@ export const withSmall = (WrappedComponent) => {
     state = {
       small: false,
     }
+
     render() {
       const { small } = this.state;
       return (
