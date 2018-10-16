@@ -37,8 +37,9 @@ function searchToObject(search) {
 }
 
 function serialize(obj) {
-  const serializedStr = Object.keys(obj).map(k =>
-    `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`).join('&');
+  const serializedStr = Object.keys(obj)
+    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`)
+    .join('&');
   if (serializedStr === '') {
     return '';
   }
@@ -104,7 +105,7 @@ class SearchComponent extends Component {
       >
         <Search color='brand' />
         <TextInput
-          plain={true}
+          plain
           type='search'
           {...this.props}
           value={value}

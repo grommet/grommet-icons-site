@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Text } from 'grommet';
@@ -24,14 +25,18 @@ export const Import = ({ component }) => (
   </StyledPre>
 );
 
+Import.propTypes = {
+  component: PropTypes.node.isRequired,
+};
+
 export const JSXComponent = ({ name, props = {} }) => {
-  const propsNode = Object.keys(props).map((prop, index) => (
-    [
-      <Text color='accent-2' key={`propName_${index}`}>{` ${prop}`}</Text>,
-      <Text color='dark-1' key={`propOperator_${index}`}>{'=\''}</Text>,
-      <Text color='neutral-2' key={`propValue_${index}`}>{props[prop]}</Text>,
-      <Text color='dark-1' key={`propQuote_${index}`}>{'\''}</Text>,
-    ]
+  const propsNode = Object.keys(props).map(prop => (
+    <Fragment key={prop}>
+      <Text color='accent-2'>{` ${prop}`}</Text>
+      <Text color='dark-1'>{'=\''}</Text>
+      <Text color='neutral-2'>{props[prop]}</Text>
+      <Text color='dark-1'>{'\''}</Text>
+    </Fragment>
   ));
   return (
     <StyledPre>
@@ -43,6 +48,11 @@ export const JSXComponent = ({ name, props = {} }) => {
       </code>
     </StyledPre>
   );
+};
+
+JSXComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  props: PropTypes.shape({}).isRequired,
 };
 
 export default { Import };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Heading, Box } from 'grommet';
 
@@ -10,7 +11,7 @@ const IconExample = ({ name, icon, small }) => {
   const Component = icon;
   return (
     <Box
-      responsive={true}
+      responsive
       justify='center'
       direction='row'
       pad={small ? 'medium' : 'large'}
@@ -19,10 +20,10 @@ const IconExample = ({ name, icon, small }) => {
       <Box
         basis='xlarge'
         direction='row'
-        responsive={true}
+        responsive
         pad={{ top: 'small' }}
       >
-        <Box responsive={true} basis='1/2'>
+        <Box responsive basis='1/2'>
           <Heading margin='none' level={2}>How do I use them?</Heading>
           <Heading level={4} style={{ maxWidth: '576px' }}>
             It’s easy! Once you’ve added the Node package you’ll have access to hundreds of
@@ -64,8 +65,8 @@ const IconExample = ({ name, icon, small }) => {
           align='start'
           justify='center'
           direction='row'
-          responsive={true}
-          wrap={true}
+          responsive
+          wrap
           basis='1/2'
         >
           <Box
@@ -96,6 +97,12 @@ const IconExample = ({ name, icon, small }) => {
       </Box>
     </Box>
   );
+};
+
+IconExample.propTypes = {
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  small: PropTypes.bool.isRequired,
 };
 
 export default withSmall(IconExample);

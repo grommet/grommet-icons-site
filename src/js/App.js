@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-
-import { Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Paragraph, Text } from 'grommet';
+import PropTypes from 'prop-types';
+import {
+  Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Paragraph, Text,
+} from 'grommet';
+import { grommet } from 'grommet/themes';
 
 import * as Icons from 'grommet-icons';
 import metadata from 'grommet-icons/metadata';
@@ -15,11 +18,15 @@ import Search from './components/Search';
 
 import { withSmall } from './utils/hocs';
 
-const iconKeys = Object.keys(Icons).filter(icon =>
-  Icons[icon] && icon !== 'default' && icon !== 'ThemeContext' &&
-  Icons[icon] !== true);
+const iconKeys = Object.keys(Icons)
+  .filter(icon => Icons[icon] && icon !== 'default' && icon !== 'ThemeContext'
+    && Icons[icon] !== true);
 
 class App extends Component {
+  static propTypes = {
+    small: PropTypes.bool.isRequired,
+  }
+
   state = {
     iconName: iconKeys[Math.floor(Math.random() * iconKeys.length)],
     search: '',
@@ -44,9 +51,10 @@ class App extends Component {
 
     const icons = iconKeys
       .filter(icon => (
-        icon.toLowerCase().match(search.toLowerCase()) ||
-        (metadata[icon] || []).some(synonym =>
-          synonym.substr(0, search.length).toLowerCase() === search.toLowerCase())
+        icon.toLowerCase().match(search.toLowerCase())
+        || (metadata[icon] || [])
+          .some(synonym => synonym.substr(0, search.length)
+            .toLowerCase() === search.toLowerCase())
       ))
       .map(icon => ({
         name: icon,
@@ -58,7 +66,7 @@ class App extends Component {
       }));
 
     return (
-      <Grommet>
+      <Grommet theme={grommet}>
         <Box background='brand'>
           <Header />
           <IconHero />
@@ -108,7 +116,8 @@ class App extends Component {
                     please file an
                     <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
                       issue
-                    </Anchor> and we will look into it.
+                    </Anchor>
+                    and we will look into it.
                   </Paragraph>
                   <Box pad={{ top: 'medium' }}>
                     <Gremlin />
