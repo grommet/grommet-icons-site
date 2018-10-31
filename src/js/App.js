@@ -20,6 +20,11 @@ const iconKeys = Object.keys(Icons)
   .filter(name => Icons[name] && name !== 'default' && name !== 'ThemeContext'
     && typeof Icons[name] === 'function');
 
+const openIssueAnchor = (
+  <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
+    issue
+  </Anchor>
+);
 export default class App extends Component {
   state = {
     iconName: iconKeys[Math.floor(Math.random() * iconKeys.length)],
@@ -105,11 +110,7 @@ export default class App extends Component {
                 <Heading level={3}>No icon, sorry!</Heading>
                 <Paragraph textAlign='center' margin='small'>
                   If you believe this icon should exist in our library,
-                  please file an
-                  <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
-                    issue
-                  </Anchor>
-                  and we will look into it.
+                  please file an {openIssueAnchor} and we will look into it.
                 </Paragraph>
                 <Box pad={{ top: 'medium' }}>
                   <Gremlin />
