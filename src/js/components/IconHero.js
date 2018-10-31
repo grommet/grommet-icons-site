@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Box, Heading } from 'grommet';
+import { Box, Heading, ResponsiveContext } from 'grommet';
 
 import {
   Achievement,
@@ -66,18 +66,7 @@ import {
   Workshop,
   Volume,
   Vulnerability,
-  ThemeContext,
 } from 'grommet-icons';
-
-import { withSmall } from '../utils/hocs';
-
-const theme = {
-  color: '#FFFFFF',
-  size: {
-    large: '96px',
-    xlarge: '176px',
-  },
-};
 
 const messages = [
   {
@@ -243,7 +232,6 @@ class IconHero extends Component {
   }
 
   render() {
-    const { small } = this.props;
     const { message } = this.state;
 
     const Icon1 = message.icons[0];
@@ -254,49 +242,51 @@ class IconHero extends Component {
     const icon1Key = `icon1_${message.key}`;
     const icon2Key = `icon2_${message.key}`;
     const icon3Key = `icon3_${message.key}`;
-    let iconProps = { size: 'xlarge' };
-    if (small) {
-      iconProps = { size: 'large' };
-    }
+
     return (
-      <ThemeContext.Provider value={theme}>
-        <Box
-          align='center'
-          justify='start'
-          pad={small ? 'medium' : 'large'}
-        >
-          <Box
-            justify='center'
-            direction='row'
-            wrap
-            pad={{ bottom: small ? 'small' : 'large' }}
-          >
-            <Box margin='medium'>
-              <Icon1 key={icon1Key} className='spin' {...iconProps} />
-            </Box>
-            <Box margin='medium'>
-              <Icon2 key={icon2Key} className='spin' {...iconProps} />
-            </Box>
-            <Box margin='medium'>
-              <Icon3 key={icon3Key} className='spin' {...iconProps} />
-            </Box>
-          </Box>
-          <Box justify='center' basis='xsmall'>
-            <Heading
-              key={headingKey}
-              textAlign='center'
-              level={small ? 2 : 1}
-              margin='none'
-              className='fade-text'
+      <ResponsiveContext.Consumer>
+        {(responsive) => {
+          const size = responsive === 'small' ? 'large' : 'xlarge';
+          return (
+            <Box
+              align='center'
+              justify='start'
+              pad='large'
             >
-              {message.text}
-            </Heading>
-          </Box>
-          <Heading level={3} margin='small'>SVG icons for React</Heading>
-        </Box>
-      </ThemeContext.Provider>
+              <Box
+                justify='center'
+                direction='row'
+                wrap
+                pad={{ bottom: 'large' }}
+              >
+                <Box margin='medium'>
+                  <Icon1 key={icon1Key} className='spin' size={size} />
+                </Box>
+                <Box margin='medium'>
+                  <Icon2 key={icon2Key} className='spin' size={size} />
+                </Box>
+                <Box margin='medium'>
+                  <Icon3 key={icon3Key} className='spin' size={size} />
+                </Box>
+              </Box>
+              <Box justify='center' basis='xsmall'>
+                <Heading
+                  key={headingKey}
+                  textAlign='center'
+                  level={1}
+                  margin='none'
+                  className='fade-text'
+                >
+                  {message.text}
+                </Heading>
+              </Box>
+              <Heading level={3} margin='small'>SVG icons for React</Heading>
+            </Box>
+          );
+        }}
+      </ResponsiveContext.Consumer>
     );
   }
 }
 
-export default withSmall(IconHero);
+export default IconHero;

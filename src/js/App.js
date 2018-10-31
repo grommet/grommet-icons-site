@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Paragraph, Text,
+  Anchor, Box, Grid, Grommet, Heading, InfiniteScroll, Paragraph,
+  Text,
 } from 'grommet';
 import { grommet } from 'grommet/themes';
 
@@ -16,17 +16,11 @@ import HeaderFooter from './components/HeaderFooter';
 import Gremlin from './components/Gremlin';
 import Search from './components/Search';
 
-import { withSmall } from './utils/hocs';
-
 const iconKeys = Object.keys(Icons)
-  .filter(icon => Icons[icon] && icon !== 'default' && icon !== 'ThemeContext'
-    && Icons[icon] !== true);
+  .filter(name => Icons[name] && name !== 'default' && name !== 'ThemeContext'
+    && typeof Icons[name] === 'function');
 
-class App extends Component {
-  static propTypes = {
-    small: PropTypes.bool.isRequired,
-  }
-
+export default class App extends Component {
   state = {
     iconName: iconKeys[Math.floor(Math.random() * iconKeys.length)],
     search: '',
@@ -46,23 +40,23 @@ class App extends Component {
   }
 
   render() {
-    const { small } = this.props;
     const { iconName, search } = this.state;
 
     const icons = iconKeys
-      .filter(icon => (
-        icon.toLowerCase().match(search.toLowerCase())
-        || (metadata[icon] || [])
+      // filter out based on search
+      .filter(name => (
+        iconName.toLowerCase().match(search.toLowerCase())
+        || (metadata[name] || [])
           .some(synonym => synonym.substr(0, search.length)
             .toLowerCase() === search.toLowerCase())
       ))
-      .map(icon => ({
-        name: icon,
-        Icon: Icons[icon],
-        label: search ? icon.replace(
+      .map(name => ({
+        name,
+        Icon: Icons[name],
+        label: search ? name.replace(
           new RegExp(search, 'ig'),
           text => (text ? `<strong>${text}</strong>` : '')
-        ) : icon,
+        ) : name,
       }));
 
     return (
@@ -73,29 +67,26 @@ class App extends Component {
           <HeaderFooter />
         </Box>
         <IconExample name={iconName} icon={Icons[iconName]} />
-        <Box>
+        <Box align='center' pad={{ horizontal: 'medium' }}>
           <Heading textAlign='center'>Looking for something in particular?</Heading>
-        </Box>
-        <Box justify='center' direction='row' pad={{ horizontal: 'medium', vertical: 'small' }}>
-          <Search
-            value={search}
-            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
-            onInput={event => this.setState({ search: event.target.value })}
-          />
-        </Box>
-        <Box justify='center' direction='row' pad={{ top: 'medium' }}>
-          <Box basis='xlarge'>
-            <Grid columns='small'>
-              {icons.length > 0 ? (
+          <Box margin='medium'>
+            <Search
+              value={search}
+              placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
+              onInput={event => this.setState({ search: event.target.value })}
+            />
+          </Box>
+          <Box width='xlarge' style={{ minHeight: '80vh' }}>
+            {icons.length > 0 ? (
+              <Grid columns='small' justifyContent='around'>
                 <InfiniteScroll items={icons}>
                   {({ label, Icon, name }) => (
                     <Box
-                      basis={small ? 'xsmall' : 'small'}
-                      justify='start'
+                      key={name + search}
+                      animation='fadeIn'
+                      justify='center'
                       align='center'
-                      pad={{ vertical: 'small' }}
-                      key={name}
-                      style={{ minHeight: small ? '162px' : '144px' }}
+                      height='small'
                     >
                       <Icon size='large' color='plain' />
                       <Text
@@ -108,23 +99,23 @@ class App extends Component {
                     </Box>
                   )}
                 </InfiniteScroll>
-              ) : (
-                <Box align='center'>
-                  <Heading level={3} margin='none'>No icon, sorry!</Heading>
-                  <Paragraph textAlign='center' margin='small'>
-                    If you believe this icon should exist in our library,
-                    please file an
-                    <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
-                      issue
-                    </Anchor>
-                    and we will look into it.
-                  </Paragraph>
-                  <Box pad={{ top: 'medium' }}>
-                    <Gremlin />
-                  </Box>
+              </Grid>
+            ) : (
+              <Box align='center'>
+                <Heading level={3}>No icon, sorry!</Heading>
+                <Paragraph textAlign='center' margin='small'>
+                  If you believe this icon should exist in our library,
+                  please file an
+                  <Anchor target='_blank' href='https://github.com/grommet/grommet-icons/issues/new'>
+                    issue
+                  </Anchor>
+                  and we will look into it.
+                </Paragraph>
+                <Box pad={{ top: 'medium' }}>
+                  <Gremlin />
                 </Box>
-              )}
-            </Grid>
+              </Box>
+            )}
           </Box>
         </Box>
         <Footer />
@@ -132,5 +123,3 @@ class App extends Component {
     );
   }
 }
-
-export default withSmall(App);
