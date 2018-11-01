@@ -52,7 +52,11 @@ export const JSXComponent = ({ name, props = {} }) => {
 
 JSXComponent.propTypes = {
   name: PropTypes.string.isRequired,
-  props: PropTypes.shape({}).isRequired,
+  props: PropTypes.shape({}),
+};
+
+JSXComponent.defaultProps = {
+  props: undefined,
 };
 
 export default { Import };

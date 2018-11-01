@@ -4,13 +4,11 @@ import { Box, Button, Heading } from 'grommet';
 
 import { Github } from 'grommet-icons';
 
-import { withSmall } from '../utils/hocs';
-
 const Header = () => (
   <Box
+    tag='header'
     justify='between'
     align='start'
-    tag='header'
     direction='row'
   >
     <Box pad='medium'>
@@ -28,4 +26,4 @@ const Header = () => (
   </Box>
 );
 
-export default withSmall(Header);
+export default Header;

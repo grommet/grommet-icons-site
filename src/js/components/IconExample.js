@@ -5,16 +5,14 @@ import { Heading, Box } from 'grommet';
 
 import { Import, JSXComponent } from './Code';
 
-import { withSmall } from '../utils/hocs';
-
-const IconExample = ({ name, icon, small }) => {
+const IconExample = ({ name, icon }) => {
   const Component = icon;
   return (
     <Box
       responsive
       justify='center'
       direction='row'
-      pad={small ? 'medium' : 'large'}
+      pad='large'
       margin={{ top: 'small' }}
     >
       <Box
@@ -101,8 +99,7 @@ const IconExample = ({ name, icon, small }) => {
 
 IconExample.propTypes = {
   name: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
-  small: PropTypes.bool.isRequired,
+  icon: PropTypes.func.isRequired,
 };
 
-export default withSmall(IconExample);
+export default IconExample;
