@@ -16,8 +16,10 @@ import HeaderFooter from './components/HeaderFooter';
 import Gremlin from './components/Gremlin';
 import Search from './components/Search';
 
+const ignoreNames = ['default', 'ThemeContext', 'Blank', 'Icon'];
+
 const iconKeys = Object.keys(Icons)
-  .filter(name => Icons[name] && name !== 'default' && name !== 'ThemeContext'
+  .filter(name => Icons[name] && ignoreNames.indexOf(name) === -1
     && typeof Icons[name] === 'function');
 
 const openIssueAnchor = (
