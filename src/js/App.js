@@ -50,7 +50,7 @@ export default class App extends Component {
     const icons = iconKeys
       // filter out based on search
       .filter(name => (
-        iconName.toLowerCase().match(search.toLowerCase())
+        name.toLowerCase().match(search.toLowerCase())
         || (metadata[name] || [])
           .some(synonym => synonym.substr(0, search.length)
             .toLowerCase() === search.toLowerCase())
@@ -78,7 +78,7 @@ export default class App extends Component {
             <Search
               value={search}
               placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
-              onInput={event => this.setState({ search: event.target.value })}
+              onChange={event => this.setState({ search: event.target.value })}
             />
           </Box>
           <Box width='xlarge' style={{ minHeight: '80vh' }}>

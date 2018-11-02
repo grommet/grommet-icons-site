@@ -60,12 +60,12 @@ class SearchComponent extends Component {
   }
 
   componentDidMount() {
-    const { onInput } = this.props;
+    const { onChange } = this.props;
     const value = searchToObject(window.location.search).s;
     if (value) {
       this.setState({ value }); // eslint-disable-line
-      if (onInput) {
-        onInput({ target: { value } });
+      if (onChange) {
+        onChange({ target: { value } });
       }
     }
   }
@@ -84,11 +84,11 @@ class SearchComponent extends Component {
     }, 200);
   }
 
-  onInput = (event, ...args) => {
-    const { onInput } = this.props;
+  onChange = (event, ...args) => {
+    const { onChange } = this.props;
     this.setState({ value: event.target.value }, this.updateLocation);
-    if (onInput) {
-      onInput(event, ...args);
+    if (onChange) {
+      onChange(event, ...args);
     }
   }
 
@@ -113,7 +113,7 @@ class SearchComponent extends Component {
           type='search'
           {...this.props}
           value={value}
-          onChange={this.onInput}
+          onChange={this.onChange}
         />
       </Box>
     );

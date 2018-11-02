@@ -30,7 +30,7 @@ export default () => (
               label='grommet'
             />
           </Box>
-          <Text textAlign={responsive === 'small' && 'center'}>
+          <Text textAlign={responsive === 'small' ? 'center' : undefined}>
             Documentation licensed under CC BY 4.0
           </Text>
         </Box>
@@ -62,7 +62,7 @@ export default () => (
               href='https://twitter.com/grommetux'
             />
           </Box>
-          <Text textAlign={responsive === 'small' && 'center'}>
+          <Text textAlign={responsive === 'small' ? 'center' : undefined}>
             © 2017 Hewlett Packard Enterprise Development LP.
           </Text>
         </Box>
