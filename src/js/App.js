@@ -52,7 +52,9 @@ export default class App extends Component {
     const icons = iconKeys
       // filter out based on search
       .filter(name => (
-        name.toLowerCase().match(search.toLowerCase())
+        name.toLowerCase()
+          // sanitize regular expression characters
+          .match(search.toLowerCase().replace(/[#-}]/g, '\\$&'))
         || (metadata[name] || [])
           .some(synonym => synonym.substr(0, search.length)
             .toLowerCase() === search.toLowerCase())
