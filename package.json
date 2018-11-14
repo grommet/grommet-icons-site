@@ -18,7 +18,7 @@
     "release-gh-pages": "cross-env NODE_ENV=ssr babel-node ./tools/release-gh-pages"
   },
   "dependencies": {
-    "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
+    "grommet": "https://github.com/grommet/grommet/tarball/stable",
     "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
