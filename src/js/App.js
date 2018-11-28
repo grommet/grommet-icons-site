@@ -55,7 +55,7 @@ export default class App extends Component {
         name.toLowerCase()
           // sanitize regular expression characters
           .match(search.toLowerCase().replace(/[#-}]/g, '\\$&'))
-        || (metadata[name] || [])
+        || ((metadata[name] && (metadata[name]).concat(name.toLowerCase())) || [])
           .some(synonym => synonym.substr(0, search.length)
             .toLowerCase() === search.toLowerCase())
       ))
