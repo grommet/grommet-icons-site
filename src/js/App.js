@@ -16,7 +16,9 @@ import HeaderFooter from './components/HeaderFooter';
 import Gremlin from './components/Gremlin';
 import Search from './components/Search';
 
-const ignoreNames = ['default', 'ThemeContext', 'Blank', 'Icon'];
+const ignoreNames = [
+  'default', 'extendDefaultTheme', 'ThemeContext', 'Blank', 'Icon',
+];
 
 const iconKeys = Object.keys(Icons)
   .filter(name => Icons[name] && ignoreNames.indexOf(name) === -1
@@ -27,6 +29,7 @@ const openIssueAnchor = (
     issue
   </Anchor>
 );
+
 export default class App extends Component {
   state = {
     iconName: iconKeys[Math.floor(Math.random() * iconKeys.length)],
