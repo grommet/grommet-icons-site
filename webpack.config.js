@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve('./dist'),
     filename: 'index.js',
-    publicPath: '/grommet-icons/',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.json'],
