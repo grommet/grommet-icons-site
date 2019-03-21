@@ -14,13 +14,13 @@ const StyledPre = styled.pre`
 export const Import = ({ component }) => (
   <StyledPre>
     <code>
-      <Text color='dark-1'>import</Text>
-      <Text color='dark-1'>{' { '}</Text>
+      <Text>import</Text>
+      <Text>{' { '}</Text>
       <Text color='accent-1'>{`${component}`}</Text>
-      <Text color='dark-1'>{' } '}</Text>
-      <Text color='dark-1'>from </Text>
+      <Text>{' } '}</Text>
+      <Text>from </Text>
       <Text color='accent-2'>{'\'grommet-icons\''}</Text>
-      <Text color='dark-1'>;</Text>
+      <Text>;</Text>
     </code>
   </StyledPre>
 );
@@ -33,18 +33,18 @@ export const JSXComponent = ({ name, props = {} }) => {
   const propsNode = Object.keys(props).map(prop => (
     <Fragment key={prop}>
       <Text color='accent-2'>{` ${prop}`}</Text>
-      <Text color='dark-1'>{'=\''}</Text>
-      <Text color='neutral-2'>{props[prop]}</Text>
-      <Text color='dark-1'>{'\''}</Text>
+      <Text>{'=\''}</Text>
+      <Text>{props[prop]}</Text>
+      <Text>{'\''}</Text>
     </Fragment>
   ));
   return (
     <StyledPre>
       <code>
-        <Text color='dark-1'>{'<'}</Text>
+        <Text>{'<'}</Text>
         <Text color='accent-1'>{name}</Text>
         {propsNode}
-        <Text color='dark-1'>{' /> '}</Text>
+        <Text>{' /> '}</Text>
       </code>
     </StyledPre>
   );
