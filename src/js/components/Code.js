@@ -16,10 +16,10 @@ export const Import = ({ component }) => (
     <code>
       <Text color='dark-1'>import</Text>
       <Text color='dark-1'>{' { '}</Text>
-      <Text color='accent-1'>{`${component}`}</Text>
+      <Text color='neutral-1'>{`${component}`}</Text>
       <Text color='dark-1'>{' } '}</Text>
       <Text color='dark-1'>from </Text>
-      <Text color='accent-2'>{'\'grommet-icons\''}</Text>
+      <Text color='neutral-2'>{'\'grommet-icons\''}</Text>
       <Text color='dark-1'>;</Text>
     </code>
   </StyledPre>
@@ -32,9 +32,9 @@ Import.propTypes = {
 export const JSXComponent = ({ name, props = {} }) => {
   const propsNode = Object.keys(props).map(prop => (
     <Fragment key={prop}>
-      <Text color='accent-2'>{` ${prop}`}</Text>
+      <Text color='neutral-2'>{` ${prop}`}</Text>
       <Text color='dark-1'>{'=\''}</Text>
-      <Text color='neutral-2'>{props[prop]}</Text>
+      <Text color='neutral-4'>{props[prop]}</Text>
       <Text color='dark-1'>{'\''}</Text>
     </Fragment>
   ));
@@ -42,7 +42,7 @@ export const JSXComponent = ({ name, props = {} }) => {
     <StyledPre>
       <code>
         <Text color='dark-1'>{'<'}</Text>
-        <Text color='accent-1'>{name}</Text>
+        <Text color='neutral-1'>{name}</Text>
         {propsNode}
         <Text color='dark-1'>{' /> '}</Text>
       </code>
