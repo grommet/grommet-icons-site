@@ -7,6 +7,7 @@ import { Import, JSXComponent } from './Code';
 
 const IconExample = ({ name, icon }) => {
   const Component = icon;
+  const iconBackground = 'dark-4';
   return (
     <Box
       responsive
@@ -48,7 +49,7 @@ const IconExample = ({ name, icon }) => {
             <JSXComponent
               name={name}
               props={{
-                color: 'brand',
+                color: 'accent-1',
               }}
             />
           </Box>
@@ -69,7 +70,7 @@ const IconExample = ({ name, icon }) => {
             align='center'
             margin='small'
             pad='large'
-            background='light-1'
+            background={iconBackground}
           >
             <Component color='plain' size='xlarge' className='fade-icon' />
           </Box>
@@ -78,7 +79,7 @@ const IconExample = ({ name, icon }) => {
               <Box
                 margin='small'
                 pad='medium'
-                background='light-1'
+                background={iconBackground}
                 round='medium'
               >
                 <Component size='large' className='fade-icon' />
@@ -86,17 +87,17 @@ const IconExample = ({ name, icon }) => {
               <Box
                 margin='small'
                 pad='small'
-                background='light-1'
+                background={iconBackground}
                 round='small'
               >
-                <Component color='brand' className='fade-icon' />
+                <Component color='accent-1' className='fade-icon' />
               </Box>
             </Box>
             <Box align='start'>
               <Box
                 margin='small'
                 pad='small'
-                background='light-1'
+                background={iconBackground}
                 round='small'
               >
                 <Component className='fade-icon' />
