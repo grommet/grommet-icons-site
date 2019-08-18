@@ -1,33 +1,29 @@
 import React from 'react';
 
-import {
-  Box, Button, ResponsiveContext, Text,
-} from 'grommet';
+import { Box, Button, ResponsiveContext, Text } from 'grommet';
 
-import {
-  Github, Grommet, Slack, Twitter,
-} from 'grommet-icons';
+import { Github, Grommet, Slack, Twitter } from 'grommet-icons';
 
 export default () => (
   <ResponsiveContext.Consumer>
     {responsive => (
       <Box
-        tag='footer'
-        pad='medium'
+        tag="footer"
+        pad="medium"
         justify={responsive !== 'small' && 'between'}
         border={{ color: 'light-4', side: 'top', size: 'medium' }}
-        direction='row-responsive'
-        gap='medium'
+        direction="row-responsive"
+        gap="medium"
       >
         <Box align={responsive === 'small' ? 'center' : 'start'}>
           <Text>Works best with</Text>
           <Box pad={{ vertical: 'small' }}>
             <Button
               primary
-              href='https://v2.grommet.io'
-              target='_blank'
+              href="https://v2.grommet.io"
+              target="_blank"
               icon={<Grommet />}
-              label='grommet'
+              label="grommet"
             />
           </Box>
           <Text textAlign={responsive === 'small' ? 'center' : undefined}>
@@ -35,31 +31,31 @@ export default () => (
           </Text>
         </Box>
         <Box
-          justify='end'
+          justify="end"
           align={responsive === 'small' ? 'center' : 'end'}
           margin={{ vertical: 'small' }}
         >
-          <Box direction='row'>
+          <Box direction="row">
             <Button
-              a11yTitle='Join Grommet Slack'
+              a11yTitle="Join Grommet Slack"
               plain
-              icon={<Slack color='plain' />}
-              target='_blank'
-              href='http://slackin.grommet.io'
+              icon={<Slack color="plain" />}
+              target="_blank"
+              href="http://slackin.grommet.io"
             />
             <Button
-              a11yTitle='See Grommet Github'
+              a11yTitle="See Grommet Github"
               plain
-              icon={<Github color='plain' />}
-              target='_blank'
-              href='https://github.com/grommet/grommet'
+              icon={<Github color="plain" />}
+              target="_blank"
+              href="https://github.com/grommet/grommet"
             />
             <Button
-              a11yTitle='See Grommet Twitter'
+              a11yTitle="See Grommet Twitter"
               plain
-              icon={<Twitter color='plain' />}
-              target='_blank'
-              href='https://twitter.com/grommetux'
+              icon={<Twitter color="plain" />}
+              target="_blank"
+              href="https://twitter.com/grommetux"
             />
           </Box>
           <Text textAlign={responsive === 'small' ? 'center' : undefined}>

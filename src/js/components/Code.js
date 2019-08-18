@@ -14,13 +14,13 @@ const StyledPre = styled.pre`
 export const Import = ({ component }) => (
   <StyledPre>
     <code>
-      <Text color='dark-1'>import</Text>
-      <Text color='dark-1'>{' { '}</Text>
-      <Text color='neutral-1'>{`${component}`}</Text>
-      <Text color='dark-1'>{' } '}</Text>
-      <Text color='dark-1'>from </Text>
-      <Text color='neutral-2'>{'\'grommet-icons\''}</Text>
-      <Text color='dark-1'>;</Text>
+      <Text color="dark-1">import</Text>
+      <Text color="dark-1">{' { '}</Text>
+      <Text color="neutral-1">{`${component}`}</Text>
+      <Text color="dark-1">{' } '}</Text>
+      <Text color="dark-1">from </Text>
+      <Text color="neutral-2">{'\'grommet-icons\''}</Text>
+      <Text color="dark-1">;</Text>
     </code>
   </StyledPre>
 );
@@ -32,19 +32,19 @@ Import.propTypes = {
 export const JSXComponent = ({ name, props = {} }) => {
   const propsNode = Object.keys(props).map(prop => (
     <Fragment key={prop}>
-      <Text color='neutral-2'>{` ${prop}`}</Text>
-      <Text color='dark-1'>{'=\''}</Text>
-      <Text color='neutral-4'>{props[prop]}</Text>
-      <Text color='dark-1'>{'\''}</Text>
+      <Text color="neutral-2">{` ${prop}`}</Text>
+      <Text color="dark-1">='</Text>
+      <Text color="neutral-4">{props[prop]}</Text>
+      <Text color="dark-1">'</Text>
     </Fragment>
   ));
   return (
     <StyledPre>
       <code>
-        <Text color='dark-1'>{'<'}</Text>
-        <Text color='neutral-1'>{name}</Text>
+        <Text color="dark-1">{'<'}</Text>
+        <Text color="neutral-1">{name}</Text>
         {propsNode}
-        <Text color='dark-1'>{' /> '}</Text>
+        <Text color="dark-1">{' /> '}</Text>
       </code>
     </StyledPre>
   );

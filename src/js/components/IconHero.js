@@ -71,154 +71,109 @@ import {
 const messages = [
   {
     text: 'I love games',
-    icons: [
-      Inspect, Favorite, Gamepad,
-    ],
+    icons: [Inspect, Favorite, Gamepad],
   },
   {
     text: 'I like pretty things',
-    icons: [
-      Diamond, Gift, Cart,
-    ],
+    icons: [Diamond, Gift, Cart],
   },
   {
     text: 'Get up and commute',
-    icons: [
-      Alarm, Run, Bike,
-    ],
+    icons: [Alarm, Run, Bike],
   },
   {
     text: 'Grow, cook, and enjoy',
-    icons: [
-      Grow, Restaurant, Gremlin,
-    ],
+    icons: [Grow, Restaurant, Gremlin],
   },
   {
     text: 'Tools of the trade',
-    icons: [
-      Edit, PersonalComputer, Configure,
-    ],
+    icons: [Edit, PersonalComputer, Configure],
   },
   {
     text: 'Planes, trains, and automobiles',
-    icons: [
-      Send, Train, Car,
-    ],
+    icons: [Send, Train, Car],
   },
   {
     text: 'Eat, drink, and be merry',
-    icons: [
-      Cafeteria, Bar, Gremlin,
-    ],
+    icons: [Cafeteria, Bar, Gremlin],
   },
   {
     text: 'Time to make the donuts',
-    icons: [
-      InProgress, Restaurant, EmptyCircle,
-    ],
+    icons: [InProgress, Restaurant, EmptyCircle],
   },
   {
     text: 'Boy meets Girl',
-    icons: [
-      User, ChatOption, UserFemale,
-    ],
+    icons: [User, ChatOption, UserFemale],
   },
   {
     text: 'The daily routine',
-    icons: [
-      Java, Monitor, Workshop,
-    ],
+    icons: [Java, Monitor, Workshop],
   },
   {
     text: 'Be well read',
-    icons: [
-      Catalog, CatalogOption, Article,
-    ],
+    icons: [Catalog, CatalogOption, Article],
   },
   {
     text: 'Turn up the beat',
-    icons: [
-      Refresh, LinkUp, Volume,
-    ],
+    icons: [Refresh, LinkUp, Volume],
   },
   {
     text: 'Eyes on the prize',
-    icons: [
-      Inspect, LinkNext, Trophy,
-    ],
+    icons: [Inspect, LinkNext, Trophy],
   },
   {
     text: 'Shoot for the stars',
-    icons: [
-      Launch, Vulnerability, Star,
-    ],
+    icons: [Launch, Vulnerability, Star],
   },
   {
     text: 'Try a triathlon',
-    icons: [
-      Swim, Bike, Run,
-    ],
+    icons: [Swim, Bike, Run],
   },
   {
     text: 'We like ice cream',
-    icons: [
-      Group, Like, IceCream,
-    ],
+    icons: [Group, Like, IceCream],
   },
   {
     text: 'Click, drag, and drop',
-    icons: [
-      Cursor, Drag, Install,
-    ],
+    icons: [Cursor, Drag, Install],
   },
   {
     text: 'Build a tree house',
-    icons: [
-      Tools, TreeOption, Home,
-    ],
+    icons: [Tools, TreeOption, Home],
   },
   {
     text: 'Buy your meal ticket',
-    icons: [
-      Currency, Cafeteria, Ticket,
-    ],
+    icons: [Currency, Cafeteria, Ticket],
   },
   {
     text: 'Search high and low',
-    icons: [
-      Search, Ascend, Descend,
-    ],
+    icons: [Search, Ascend, Descend],
   },
   {
     text: 'Cross-browser, of course',
-    icons: [
-      Edge, Chrome, Firefox,
-    ],
+    icons: [Edge, Chrome, Firefox],
   },
   {
     text: 'Cross-browser, of course',
-    icons: [
-      InternetExplorer, SafariOption, Opera,
-    ],
+    icons: [InternetExplorer, SafariOption, Opera],
   },
   {
     text: 'Chart a course to success',
-    icons: [
-      Compass, Directions, Achievement,
-    ],
+    icons: [Compass, Directions, Achievement],
   },
 ];
 
 class IconHero extends Component {
   state = {
     message: messages[0],
-  }
+  };
 
   componentDidMount() {
     this.changeMessageInterval = setInterval(() => {
       const { message } = this.state;
       const possibleMessages = messages.filter(m => m.text !== message.text);
-      const newMessage = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
+      const newMessage =
+        possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
       newMessage.key = new Date();
       this.setState({ message: newMessage });
     }, 5000); // 5 seconds
@@ -245,42 +200,40 @@ class IconHero extends Component {
 
     return (
       <ResponsiveContext.Consumer>
-        {(responsive) => {
+        {responsive => {
           const size = responsive === 'small' ? 'large' : 'xlarge';
           return (
-            <Box
-              align='center'
-              justify='start'
-              pad='large'
-            >
+            <Box align="center" justify="start" pad="large">
               <Box
-                justify='center'
-                direction='row'
+                justify="center"
+                direction="row"
                 wrap
                 pad={{ bottom: 'large' }}
               >
-                <Box margin='medium'>
-                  <Icon1 key={icon1Key} className='spin' size={size} />
+                <Box margin="medium">
+                  <Icon1 key={icon1Key} className="spin" size={size} />
                 </Box>
-                <Box margin='medium'>
-                  <Icon2 key={icon2Key} className='spin' size={size} />
+                <Box margin="medium">
+                  <Icon2 key={icon2Key} className="spin" size={size} />
                 </Box>
-                <Box margin='medium'>
-                  <Icon3 key={icon3Key} className='spin' size={size} />
+                <Box margin="medium">
+                  <Icon3 key={icon3Key} className="spin" size={size} />
                 </Box>
               </Box>
-              <Box justify='center' basis='xsmall'>
+              <Box justify="center" basis="xsmall">
                 <Heading
                   key={headingKey}
-                  textAlign='center'
+                  textAlign="center"
                   level={1}
-                  margin='none'
-                  className='fade-text'
+                  margin="none"
+                  className="fade-text"
                 >
                   {message.text}
                 </Heading>
               </Box>
-              <Heading level={3} margin='small'>SVG icons for React</Heading>
+              <Heading level={3} margin="small">
+                SVG icons for React
+              </Heading>
             </Box>
           );
         }}

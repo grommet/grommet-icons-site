@@ -28,10 +28,13 @@ const focusBoxStyle = {
 function searchToObject(search) {
   const params = {};
   if (search) {
-    search.slice(1).split('&').forEach((param) => {
-      const [name, value] = param.split('=');
-      params[name] = decodeURIComponent(value);
-    });
+    search
+      .slice(1)
+      .split('&')
+      .forEach(param => {
+        const [name, value] = param.split('=');
+        params[name] = decodeURIComponent(value);
+      });
   }
   return params;
 }
@@ -47,7 +50,7 @@ function serialize(obj) {
 }
 
 class SearchComponent extends Component {
-  inputRef = React.createRef()
+  inputRef = React.createRef();
 
   constructor(props, context) {
     super(props, context);
@@ -80,9 +83,13 @@ class SearchComponent extends Component {
       if (query.s === '') {
         delete query.s;
       }
-      window.history.replaceState(query, '', `${window.location.pathname}${serialize(query)}`);
+      window.history.replaceState(
+        query,
+        '',
+        `${window.location.pathname}${serialize(query)}`,
+      );
     }, 200);
-  }
+  };
 
   onChange = (event, ...args) => {
     const { onChange } = this.props;
@@ -90,27 +97,37 @@ class SearchComponent extends Component {
     if (onChange) {
       onChange(event, ...args);
     }
-  }
+  };
 
   render() {
     const { borderStyle, boxStyle, value } = this.state;
     return (
       <Box
-        direction='row'
-        width='large'
-        align='center'
-        alignContent='stretch'
-        round='medium'
+        direction="row"
+        width="large"
+        align="center"
+        alignContent="stretch"
+        round="medium"
         border={{ size: 'small', ...borderStyle }}
         pad={{ horizontal: 'medium' }}
-        onFocus={() => this.setState({ borderStyle: focusBorderStyle, boxStyle: focusBoxStyle })}
-        onBlur={() => this.setState({ borderStyle: baseBorderStyle, boxStyle: baseBoxStyle })}
+        onFocus={() =>
+          this.setState({
+            borderStyle: focusBorderStyle,
+            boxStyle: focusBoxStyle,
+          })
+        }
+        onBlur={() =>
+          this.setState({
+            borderStyle: baseBorderStyle,
+            boxStyle: baseBoxStyle,
+          })
+        }
         {...boxStyle}
       >
-        <Search color='brand' />
+        <Search color="brand" />
         <TextInput
           plain
-          type='search'
+          type="search"
           {...this.props}
           value={value}
           onChange={this.onChange}
