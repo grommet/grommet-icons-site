@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Box, Heading, ResponsiveContext } from 'grommet';
 
@@ -163,83 +163,65 @@ const messages = [
   },
 ];
 
-class IconHero extends Component {
-  state = {
-    message: messages[0],
-  };
+const IconHero = () => {
+  const responsive = useContext(ResponsiveContext);
+  const [message, setMessage] = useState(messages[0]);
 
-  componentDidMount() {
-    this.changeMessageInterval = setInterval(() => {
-      const { message } = this.state;
+  useEffect(() => {
+    const timer = setInterval(() => {
       const possibleMessages = messages.filter(m => m.text !== message.text);
       const newMessage =
         possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
       newMessage.key = new Date();
-      this.setState({ message: newMessage });
+      setMessage(newMessage);
     }, 5000); // 5 seconds
-  }
+    return () => clearInterval(timer);
+  }, []);
 
-  componentWillUnmount() {
-    if (this.changeMessageInterval) {
-      clearTimeout(this.changeMessageInterval);
-      this.changeMessageInterval = undefined;
-    }
-  }
+  const Icon1 = message.icons[0];
+  const Icon2 = message.icons[1];
+  const Icon3 = message.icons[2];
+  // make sure to always remount to animate again
+  const headingKey = `message_${message.key}`;
+  const icon1Key = `icon1_${message.key}`;
+  const icon2Key = `icon2_${message.key}`;
+  const icon3Key = `icon3_${message.key}`;
+  const size = responsive === 'small' ? 'large' : 'xlarge';
 
-  render() {
-    const { message } = this.state;
-
-    const Icon1 = message.icons[0];
-    const Icon2 = message.icons[1];
-    const Icon3 = message.icons[2];
-    // make sure to always remount to animate again
-    const headingKey = `message_${message.key}`;
-    const icon1Key = `icon1_${message.key}`;
-    const icon2Key = `icon2_${message.key}`;
-    const icon3Key = `icon3_${message.key}`;
-
-    return (
-      <ResponsiveContext.Consumer>
-        {responsive => {
-          const size = responsive === 'small' ? 'large' : 'xlarge';
-          return (
-            <Box align="center" justify="start" pad="large">
-              <Box
-                justify="center"
-                direction="row"
-                wrap
-                pad={{ bottom: 'large' }}
-              >
-                <Box margin="medium">
-                  <Icon1 key={icon1Key} className="spin" size={size} />
-                </Box>
-                <Box margin="medium">
-                  <Icon2 key={icon2Key} className="spin" size={size} />
-                </Box>
-                <Box margin="medium">
-                  <Icon3 key={icon3Key} className="spin" size={size} />
-                </Box>
-              </Box>
-              <Box justify="center" basis="xsmall">
-                <Heading
-                  key={headingKey}
-                  textAlign="center"
-                  level={1}
-                  margin="none"
-                  className="fade-text"
-                >
-                  {message.text}
-                </Heading>
-              </Box>
-              <Heading level={3} margin="small">
-                SVG icons for React
-              </Heading>
-            </Box>
-          );
-        }}
-      </ResponsiveContext.Consumer>
-    );
-  }
+  return (
+    <Box align="center" justify="start" pad="large">
+      <Box
+        justify="center"
+        direction="row"
+        wrap
+        pad={{ bottom: 'large' }}
+      >
+        <Box margin="medium">
+          <Icon1 key={icon1Key} className="spin" size={size} />
+        </Box>
+        <Box margin="medium">
+          <Icon2 key={icon2Key} className="spin" size={size} />
+        </Box>
+        <Box margin="medium">
+          <Icon3 key={icon3Key} className="spin" size={size} />
+        </Box>
+      </Box>
+      <Box justify="center" basis="xsmall">
+        <Heading
+          key={headingKey}
+          textAlign="center"
+          level={1}
+          margin="none"
+          className="fade-text"
+        >
+          {message.text}
+        </Heading>
+      </Box>
+      <Heading level={3} margin="small">
+        SVG icons for React
+      </Heading>
+    </Box>
+  );
 }
 
 export default IconHero;
