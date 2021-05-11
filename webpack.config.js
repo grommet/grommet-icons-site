@@ -1,12 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const plugins = [
-  new WriteFilePlugin(),
-  new CopyWebpackPlugin([{ from: './public' }]),
-  new webpack.NamedModulesPlugin(),
+  new CopyWebpackPlugin({ patterns: [{ from: './public' }] }),
   new webpack.HotModuleReplacementPlugin(),
 ];
 
@@ -28,11 +25,6 @@ module.exports = {
     extensions: ['.js', '.json'],
   },
   plugins,
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-  },
   module: {
     rules: [
       {
@@ -41,5 +33,8 @@ module.exports = {
         loader: 'babel-loader',
       },
     ],
+  },
+  optimization: {
+    moduleIds: 'named',
   },
 };
