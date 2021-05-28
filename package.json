@@ -20,7 +20,7 @@
   "dependencies": {
     "grommet": "https://github.com/grommet/grommet/tarball/stable",
     "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable",
-    "grommet-theme-hpe": "https://github.com/grommet/grommet-theme-hpe/tarball/stable",
+    "grommet-theme-hpe": "^2.1.0",
     "prop-types": "^15.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
