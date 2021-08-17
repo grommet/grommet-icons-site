@@ -35,23 +35,27 @@ const SearchComponent = ({ onChange, placeholder, value }) => {
       align="center"
       alignContent="stretch"
       round="medium"
-      border={{ size: 'small', ...(focus ? focusBorderStyle : baseBorderStyle) }}
+      border={{
+        size: 'small',
+        ...(focus ? focusBorderStyle : baseBorderStyle),
+      }}
       pad={{ horizontal: 'medium' }}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(focus ? focusBoxStyle : baseBoxStyle)}
     >
-      <Search color="brand" />
       <TextInput
         plain
+        focusIndicator={false}
         type="search"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        icon={<Search color="brand" />}
       />
     </Box>
   );
-}
+};
 
 export default SearchComponent;
