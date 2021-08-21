@@ -1,16 +1,13 @@
 const path = require('path');
-const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const plugins = [
   new CopyWebpackPlugin({ patterns: [{ from: './public' }] }),
-  new webpack.HotModuleReplacementPlugin(),
 ];
 
 module.exports = {
   devtool: 'hidden-source-map',
   devServer: {
-    contentBase: './dist',
     historyApiFallback: true,
     hot: true,
     port: 8557,
