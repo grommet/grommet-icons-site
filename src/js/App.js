@@ -26,6 +26,7 @@ import Search from './components/Search';
 
 const ignoreNames = [
   'default',
+  'defaultProps',
   'extendDefaultTheme',
   'ThemeContext',
   'Blank',
@@ -35,8 +36,7 @@ const ignoreNames = [
 const iconKeys = Object.keys(Icons).filter(
   name =>
     Icons[name] &&
-    ignoreNames.indexOf(name) === -1 &&
-    typeof Icons[name] === 'function',
+    ignoreNames.indexOf(name) === -1,
 );
 
 const openIssueAnchor = (
