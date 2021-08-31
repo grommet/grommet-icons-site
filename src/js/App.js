@@ -25,6 +25,7 @@ import Gremlin from './components/Gremlin';
 import Search from './components/Search';
 
 const ignoreNames = [
+  'base',
   'default',
   'defaultProps',
   'extendDefaultTheme',
