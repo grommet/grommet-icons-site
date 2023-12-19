@@ -35,9 +35,7 @@ const ignoreNames = [
 ];
 
 const iconKeys = Object.keys(Icons).filter(
-  name =>
-    Icons[name] &&
-    ignoreNames.indexOf(name) === -1,
+  (name) => Icons[name] && ignoreNames.indexOf(name) === -1,
 );
 
 const openIssueAnchor = (
@@ -51,13 +49,16 @@ const openIssueAnchor = (
 
 const App = () => {
   const [theme, setTheme] = useState();
-  const [iconName, setIconName] = useState(iconKeys[Math.floor(Math.random() * iconKeys.length)]);
+  const [iconName, setIconName] = useState(
+    iconKeys[Math.floor(Math.random() * iconKeys.length)],
+  );
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    const timer = setInterval(() =>
-      setIconName(iconKeys[Math.floor(Math.random() * iconKeys.length)]),
-      5000); // 5 seconds
+    const timer = setInterval(
+      () => setIconName(iconKeys[Math.floor(Math.random() * iconKeys.length)]),
+      5000,
+    ); // 5 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -89,7 +90,7 @@ const App = () => {
   const icons = iconKeys
     // filter out based on search
     .filter(
-      name =>
+      (name) =>
         name
           .toLowerCase()
           // sanitize regular expression characters
@@ -98,16 +99,16 @@ const App = () => {
           (metadata[name] && metadata[name].concat(name.toLowerCase())) ||
           []
         ).some(
-          synonym =>
+          (synonym) =>
             synonym.substr(0, search.length).toLowerCase() ===
             search.toLowerCase(),
         ),
     )
-    .map(name => ({
+    .map((name) => ({
       name,
       Icon: Icons[name],
       label: search
-        ? name.replace(new RegExp(search, 'ig'), text =>
+        ? name.replace(new RegExp(search, 'ig'), (text) =>
             text ? `<strong>${text}</strong>` : '',
           )
         : name,
@@ -128,10 +129,8 @@ const App = () => {
         <Box margin="medium">
           <Search
             value={search}
-            placeholder={`Search ${
-              iconKeys.length
-            } icons (e.g. social, delete, user, arrow, sport, player)`}
-            onChange={event => setSearch(event.target.value)}
+            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
+            onChange={(event) => setSearch(event.target.value)}
           />
         </Box>
         <Box width="xlarge" style={{ minHeight: '80vh' }}>
@@ -175,6 +174,6 @@ const App = () => {
       <Footer />
     </Grommet>
   );
-}
+};
 
 export default App;
