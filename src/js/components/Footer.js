@@ -6,11 +6,11 @@ import { Github, Grommet, Slack, Twitter } from 'grommet-icons';
 
 export default () => (
   <ResponsiveContext.Consumer>
-    {responsive => (
+    {(responsive) => (
       <Box
         tag="footer"
         pad="medium"
-        justify={responsive !== 'small' && 'between'}
+        justify={responsive !== 'small' ? 'between' : undefined}
         border={{ color: 'light-4', side: 'top', size: 'medium' }}
         direction="row-responsive"
         gap="medium"
