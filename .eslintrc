@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": ["airbnb", "prettier", "plugin:grommet/recommended"],
   "plugins": ["prettier"],
   "env": {
@@ -29,6 +29,7 @@
     "import/prefer-default-export": 0,
     "indent": "off",
     "no-console": 0,
+    "react/function-component-definition": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-wrap-multilines": 0,
     "react/jsx-one-expression-per-line": 0,

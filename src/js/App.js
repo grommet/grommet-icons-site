@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import URLSearchParams from 'url-search-params';
+import URLSearchParams from '@ungap/url-search-params';
 import {
   Anchor,
   Box,
