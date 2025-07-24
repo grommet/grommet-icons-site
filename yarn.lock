@@ -3343,7 +3343,7 @@ grommet-icons@^4.12.4:
 
 "grommet-icons@https://github.com/grommet/grommet-icons/tarball/NEXT-stable":
   version "4.14.0"
-  resolved "https://github.com/grommet/grommet-icons/tarball/NEXT-stable#6ac5a75351b3682da0d54c556fbe47cddf76aec0"
+  resolved "https://github.com/grommet/grommet-icons/tarball/NEXT-stable#524d7eac9d573dfd22e0e6f568950d9e320f2447"
 
 grommet-theme-hpe@^5.1.1:
   version "5.8.0"
