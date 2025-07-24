@@ -3,6 +3,7 @@ import URLSearchParams from '@ungap/url-search-params';
 import {
   Anchor,
   Box,
+  CheckBox,
   Grid,
   Grommet,
   Heading,
@@ -134,7 +135,7 @@ const App = () => {
   }));
 
   const [view, setView] = useState('NEXT');
-
+  const [comparison, setComparison] = useState(false);
   return (
     <Grommet theme={theme}>
       <Box background="brand" animation="fadeIn">
@@ -147,16 +148,30 @@ const App = () => {
         <Heading textAlign="center">
           Looking for something in particular?
         </Heading>
-        <Box margin="medium" direction="row" gap="medium" align="center">
-          <Search
-            value={search}
-            placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          <ToggleGroup
-            options={['NEXT', 'Deprecated']}
-            value={view}
-            onToggle={({ value: nextValue }) => setView(nextValue)}
+        <Box
+          pad="medium"
+          background="background-contrast"
+          round="small"
+          gap="medium"
+          align="center"
+        >
+          <Box direction="row" gap="medium" align="center">
+            <Search
+              value={search}
+              placeholder={`Search ${iconKeys.length} icons (e.g. social, delete, user, arrow, sport, player)`}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+            <ToggleGroup
+              options={['NEXT', 'Deprecated']}
+              value={view}
+              onToggle={({ value: nextValue }) => setView(nextValue)}
+            />
+          </Box>
+          <CheckBox
+            toggle
+            label="Compare with existing"
+            checked={comparison}
+            onChange={() => setComparison(!comparison)}
           />
         </Box>
         <Box width="xlarge" style={{ minHeight: '80vh' }}>
@@ -174,29 +189,33 @@ const App = () => {
                         height="small"
                       >
                         <Box direction="row" gap="small">
-                          <Box align="center" gap="xsmall">
-                            {Iconv4 ? (
-                              <Iconv4 size="large" color="plain" />
-                            ) : (
-                              <Box
-                                width="48px"
-                                height="48px"
-                                justify="center"
-                                align="center"
-                                border
-                              >
-                                <Text>N/A</Text>
-                              </Box>
-                            )}
-                            <Text size="small" weight={500}>
-                              Existing
-                            </Text>
-                          </Box>
+                          {comparison ? (
+                            <Box align="center" gap="xsmall">
+                              {Iconv4 ? (
+                                <Iconv4 size="large" color="plain" />
+                              ) : (
+                                <Box
+                                  width="48px"
+                                  height="48px"
+                                  justify="center"
+                                  align="center"
+                                  border
+                                >
+                                  <Text>N/A</Text>
+                                </Box>
+                              )}
+                              <Text size="small" weight={500}>
+                                Existing
+                              </Text>
+                            </Box>
+                          ) : undefined}
                           <Box align="center" gap="xsmall">
                             <Icon size="large" color="plain" />
-                            <Text size="small" weight={500}>
-                              Updated
-                            </Text>
+                            {comparison ? (
+                              <Text size="small" weight={500}>
+                                Updated
+                              </Text>
+                            ) : undefined}
                           </Box>
                         </Box>
                         <Box
