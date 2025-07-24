@@ -21,6 +21,7 @@
     "@ungap/url-search-params": "0.2.2",
     "grommet": "https://github.com/grommet/grommet/tarball/stable",
     "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/NEXT-stable",
+    "grommet-icons-v4": "npm:grommet-icons@^4.0.0",
     "grommet-theme-hpe": "^5.1.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
