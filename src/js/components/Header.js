@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Button, Heading } from 'grommet';
 
-import { Github } from 'grommet-icons';
+// import { Github } from 'grommet-icons';
 
 const Header = () => (
   <Box tag="header" justify="between" align="start" direction="row">
@@ -15,12 +15,12 @@ const Header = () => (
       </Heading>
     </Box>
     <Box pad={{ vertical: 'medium', horizontal: 'small' }}>
-      <Button
+      {/* <Button
         a11yTitle="Go to grommet-icons on GitHub"
         target="_blank"
         href="https://github.com/grommet/grommet-icons"
         icon={<Github size="large" />}
-      />
+      /> */}
     </Box>
   </Box>
 );

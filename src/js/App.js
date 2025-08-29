@@ -13,18 +13,18 @@ import {
   ToggleGroup,
 } from 'grommet';
 import { grommet } from 'grommet/themes';
-import { hpe } from 'grommet-theme-hpe';
+// import { hpe } from 'grommet-theme-hpe';
 
 import * as Icons from 'grommet-icons';
 import * as Iconsv4 from 'grommet-icons-v4';
 import metadata from 'grommet-icons/metadata';
 
 import IconExample from './components/IconExample';
-import IconHero from './components/IconHero';
+// import IconHero from './components/IconHero';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import HeaderFooter from './components/HeaderFooter';
-import Gremlin from './components/Gremlin';
+// import Gremlin from './components/Gremlin';
 import Search from './components/Search';
 
 const ignoreNames = [
@@ -70,13 +70,13 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (window.location.search) {
-      const params = new URLSearchParams(window.location.search);
-      setSearch(params.get('s') || '');
-      setTheme(params.get('theme') === 'hpe' ? hpe : grommet);
-    } else {
-      setTheme(grommet);
-    }
+    // if (window.location.search) {
+    //   const params = new URLSearchParams(window.location.search);
+    //   setSearch(params.get('s') || '');
+    //   setTheme(params.get('theme') === 'hpe' ? hpe : grommet);
+    // } else {
+    setTheme(grommet);
+    // }
   }, []);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const App = () => {
     <Grommet theme={theme}>
       <Box background="brand" animation="fadeIn">
         <Header />
-        <IconHero />
+        {/* <IconHero /> */}
         <HeaderFooter />
       </Box>
       <IconExample name={iconName} icon={Icons[iconName]} />
@@ -308,9 +308,7 @@ const App = () => {
                 If you believe this icon should exist in our library, please
                 file an {openIssueAnchor} and we will look into it.
               </Paragraph>
-              <Box pad={{ top: 'medium' }}>
-                <Gremlin />
-              </Box>
+              <Box pad={{ top: 'medium' }}>{/* <Gremlin /> */}</Box>
             </Box>
           )}
         </Box>
