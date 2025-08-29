@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Button, ResponsiveContext, Text } from 'grommet';
 
-import { Github, Grommet, Slack, Twitter } from 'grommet-icons';
+// import { Github, Grommet, Slack, Twitter } from 'grommet-icons';
 
 export default () => (
   <ResponsiveContext.Consumer>
@@ -18,13 +18,13 @@ export default () => (
         <Box align={responsive === 'small' ? 'center' : 'start'}>
           <Text>Works best with</Text>
           <Box pad={{ vertical: 'small' }}>
-            <Button
+            {/* <Button
               primary
               href="https://v2.grommet.io"
               target="_blank"
               icon={<Grommet />}
               label="grommet"
-            />
+            /> */}
           </Box>
           <Text textAlign={responsive === 'small' ? 'center' : undefined}>
             Documentation licensed under CC BY 4.0
@@ -36,7 +36,7 @@ export default () => (
           margin={{ vertical: 'small' }}
         >
           <Box direction="row">
-            <Button
+            {/* <Button
               a11yTitle="Join Grommet Slack"
               plain
               icon={<Slack color="plain" />}
@@ -56,7 +56,7 @@ export default () => (
               icon={<Twitter color="plain" />}
               target="_blank"
               href="https://twitter.com/grommetux"
-            />
+            /> */}
           </Box>
           <Text textAlign={responsive === 'small' ? 'center' : undefined}>
             © 2017 Hewlett Packard Enterprise Development LP.
